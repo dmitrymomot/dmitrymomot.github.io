@@ -36,3 +36,4 @@ theme                   = "sam"
 [[params.mainMenu]]
     link = "https://github.com/dmitrymomot"
     text = "github"
+    

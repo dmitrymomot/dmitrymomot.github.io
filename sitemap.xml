@@ -8,19 +8,8 @@
   </url>
   
   <url>
-    <loc>/posts/my-first-post/</loc>
-    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/</loc>
     <lastmod>2018-02-13T12:21:57-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/blog/</loc>
-    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -35,14 +24,7 @@
   </url>
   
   <url>
-    <loc>/tags/story/</loc>
-    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/</loc>
-    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
     <priority>0</priority>
   </url>
   

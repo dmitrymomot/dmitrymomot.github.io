@@ -1,7 +1,7 @@
 ---
 title: "My First Post"
 date: 2018-05-16T23:26:06+03:00
-draft: false
+draft: true
 showDate: true
 tags: ["blog","story"]
 ---
