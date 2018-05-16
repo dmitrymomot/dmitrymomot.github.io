@@ -4,4 +4,4 @@ date: 2018-02-13T12:21:57-05:00
 
 ---
 
-Welcome to the blog section! Here I post some useful notes in themes I'm interested in.
+Welcome to the blog section! Here I post some useful notes on topics that interest me.
