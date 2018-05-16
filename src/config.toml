@@ -30,8 +30,8 @@ theme                   = "sam"
     text = "notes"
 
 [[params.mainMenu]]
-    link = "/contact"
-    text = "contact me"
+    link = "https://www.linkedin.com/in/dmitrymomot/"
+    text = "linkedin"
 
 [[params.mainMenu]]
     link = "https://github.com/dmitrymomot"
