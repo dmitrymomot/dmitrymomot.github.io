@@ -9,19 +9,19 @@ Over 9 years’ Web Development experience, with proven background successfully 
 
 ### Skills
 ---
-    - Advanced knowledge of PHP and Golang (Go)
-    - API design knowledge, microservice architecture
-    - Middle knowledge of Front-end web development (VueJs, VanilaJs, HTML/CSS)
-    - Base knowledge of Ruby and Python
-    - MySQL, PostgreSQL, MongoDB, Redis, Memcached
-    - RPC, queues, sockets
-    - Docker, Vagrant
-    - Stripe (payment gateway)
-    - AWS
-    - Continuous Integration (Jenkins, CircleCI)
-    - Git
-    - APNS, GCM
-    - Scrum
+* Advanced knowledge of PHP and Golang (Go)
+* API design knowledge, microservice architecture
+* Middle knowledge of Front-end web development (VueJs, VanilaJs, HTML/CSS)
+* Base knowledge of Ruby and Python
+* MySQL, PostgreSQL, MongoDB, Redis, Memcached
+* RPC, queues, sockets
+* Docker, Vagrant
+* Stripe (payment gateway)
+* AWS
+* Continuous Integration (Jenkins, CircleCI)
+* Git
+* APNS, GCM
+* Scrum
 
 ---
 P.S. Only remote work. Thanks for understanding.
