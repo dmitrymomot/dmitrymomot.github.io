@@ -14,8 +14,8 @@ theme                   = "sam"
     homepage            = "main"
     galleryFolder       = "images/"
     clickablePhotos     = true
-    footerText          = "2018 © Dmitry Momot"
-
+    footerText          = "Powered by Hugo. Theme by Vicki Lai. Hosted on GitHub."
+    copyright           = "2018 © Dmitry Momot."
 # Metadata
     description         = "Personal site of Dmitry Momot."
     # twitterCard         = "summary_large_image"
@@ -36,4 +36,3 @@ theme                   = "sam"
 [[params.mainMenu]]
     link = "https://github.com/dmitrymomot"
     text = "github"
-    
