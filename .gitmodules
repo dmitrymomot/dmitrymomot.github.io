@@ -1,0 +1,3 @@
+[submodule "source/themes/sam"]
+	path = source/themes/sam
+	url = https://github.com/hivickylai/hugo-theme-sam.git
