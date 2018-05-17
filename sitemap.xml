@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://dmomot.com/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2018-05-17T01:12:09+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dmomot.com/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2018-02-13T12:21:57-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dmomot.com/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dmomot.com/</loc>
+    <loc>/</loc>
     <lastmod>2018-05-17T01:12:09+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dmomot.com/tags/</loc>
+    <loc>/tags/</loc>
     <priority>0</priority>
   </url>
   
