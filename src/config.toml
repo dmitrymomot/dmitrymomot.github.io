@@ -14,7 +14,7 @@ theme                   = "sam"
     homepage            = "main"
     galleryFolder       = "images/"
     clickablePhotos     = true
-    footerText          = "Powered by Hugo. Theme by Vicki Lai. Hosted on GitHub."
+    footerText          = "Built with Hugo. Theme by Vicki Lai. Hosted on GitHub."
     copyright           = "2018 © Dmitry Momot."
 # Metadata
     description         = "Personal site of Dmitry Momot."
