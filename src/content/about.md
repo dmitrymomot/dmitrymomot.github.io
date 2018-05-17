@@ -13,7 +13,7 @@ Or you can download my [CV](#)
 
 ## Technical Background
 
-Over 9 years’ Web Development experience, with proven background successfully managing all facets of web application development, from initial design and architecture to deployment and client management. Also, I have experience in management of small teams up to 5 persons.
+Over 9 years’ web development experience, with the proven background of successfully managing all facets of web application development, from initial design and architecture to deployment and client management. Also, I have experience in management of small teams up to 5 persons.
 
 ### Skills
 ---
