@@ -1,4 +1,4 @@
-baseurl                 = "/"               # Your domain name. Must end with "/"
+baseurl                 = "http://dmomot.com/"               # Your domain name. Must end with "/"
 languageCode            = "en-us"
 title                   = "Dmitry Momot"
 theme                   = "sam"
@@ -22,11 +22,11 @@ googleAnalytics       = "UA-119385623-1"             # Tracking code, eg. "UA-11
     # primaryImage        = "/logo.png"
 
 [[params.mainMenu]]
-    link = "/about"
+    link = "/about/"
     text = "whois"
 
 [[params.mainMenu]]
-    link = "/posts"
+    link = "/posts/"
     text = "notes"
 
 [[params.mainMenu]]
