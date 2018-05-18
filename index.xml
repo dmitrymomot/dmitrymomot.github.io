@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dmitry Momot</title>
-    <link>/</link>
+    <link>http://dmomot.com/</link>
     <description>Recent content on Dmitry Momot</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 17 May 2018 01:12:09 +0300</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dmomot.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>http://dmomot.com/about/</link>
       <pubDate>Thu, 17 May 2018 01:12:09 +0300</pubDate>
       
-      <guid>/about/</guid>
+      <guid>http://dmomot.com/about/</guid>
       <description>Hi,
 My name is Dmitry Momot (Dmytro Momot) and I&amp;rsquo;m traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on Instagram. Or you can download my CV
 Technical Background Over 9 years’ web development experience, with the proven background of successfully managing all facets of web application development, from initial design and architecture to deployment and client management. Also, I have experience in management of small teams up to 5 persons.</description>

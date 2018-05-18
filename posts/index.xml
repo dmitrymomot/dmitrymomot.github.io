@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Dmitry Momot</title>
-    <link>/posts/</link>
+    <link>http://dmomot.com/posts/</link>
     <description>Recent content in Posts on Dmitry Momot</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 13 Feb 2018 12:21:57 -0500</lastBuildDate>
     
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dmomot.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
