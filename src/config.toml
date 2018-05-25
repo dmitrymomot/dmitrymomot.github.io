@@ -1,4 +1,4 @@
-baseurl                 = "http://dmomot.com/"               # Your domain name. Must end with "/"
+baseurl                 = "https://dmomot.com/"               # Your domain name. Must end with "/"
 languageCode            = "en-us"
 title                   = "Dmitry Momot"
 theme                   = "sam"
