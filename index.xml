@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dmitry Momot</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Dmitry Momot</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 May 2018 01:12:09 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 17 May 2018 10:46:17 +0300</lastBuildDate>
     
 	<atom:link href="https://dmomot.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,12 +14,30 @@
     <item>
       <title>About</title>
       <link>https://dmomot.com/about/</link>
-      <pubDate>Thu, 17 May 2018 01:12:09 +0300</pubDate>
+      <pubDate>Mon, 24 Aug 2020 12:38:09 +0300</pubDate>
       
       <guid>https://dmomot.com/about/</guid>
       <description>Hi,
 My name is Dmitry Momot (Dmytro Momot) and I&amp;rsquo;m traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on Instagram. Or you can download my CV
-Technical Background Over 9 years’ web development experience, with the proven background of successfully managing all facets of web application development, from initial design and architecture to deployment and client management. Also, I have experience in management of small teams up to 5 persons.</description>
+Technical Background Over 11 years’ web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than 5 years of experience in the management of small teams.</description>
+    </item>
+    
+    <item>
+      <title>Що таке Lorem Ipsum?</title>
+      <link>https://dmomot.com/posts/seconf-one/</link>
+      <pubDate>Thu, 17 May 2018 10:46:17 +0300</pubDate>
+      
+      <guid>https://dmomot.com/posts/seconf-one/</guid>
+      <description>Lorem Ipsum - це текст-&amp;ldquo;риба&amp;rdquo;, що використовується в друкарстві та дизайні. Lorem Ipsum є, фактично, стандартною &amp;ldquo;рибою&amp;rdquo; аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та склав на ній підбірку зразків шрифтів. &amp;ldquo;Риба&amp;rdquo; не тільки успішно пережила п&amp;rsquo;ять століть, але й прижилася в електронному верстуванні, залишаючись по суті незмінною. Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп&amp;rsquo;ютерного верстування на кшталт Aldus Pagemaker, які використовували різні версії Lorem Ipsum.</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://dmomot.com/posts/my-first-post/</link>
+      <pubDate>Wed, 16 May 2018 23:26:06 +0300</pubDate>
+      
+      <guid>https://dmomot.com/posts/my-first-post/</guid>
+      <description>Test posts Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor molestie viverra. Phasellus tristique auctor maximus. Nulla euismod, est sit amet varius ornare, ex nisl sodales justo, vitae euismod libero turpis sed turpis. Phasellus dapibus nec ligula at fringilla. Donec sit amet libero ornare mi viverra pharetra. Curabitur semper magna et nulla luctus, eu tincidunt lacus bibendum. Sed nec lacus eget nisl eleifend placerat nec ornare ligula. Sed faucibus diam at arcu hendrerit aliquam.</description>
     </item>
     
   </channel>

@@ -12,18 +12,18 @@
     <meta name="description" content="Personal site of Dmitry Momot.">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:domain" content="/">
+    <meta name="twitter:domain" content="https://dmomot.com/">
     
-    <meta name="twitter:image" content="/tn.png">
+    
     <meta name="twitter:title" property="og:title" itemprop="title name" content="Dmitry Momot">
     <meta name="twitter:description" property="og:description" itemprop="description" content="Personal site of Dmitry Momot.">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="/">
-    <meta name="og:image" itemprop="image primaryImageOfPage" content="/tn.png">
+    <meta name="og:url" content="https://dmomot.com/">
+    
     
     <title>Dmitry Momot</title>
-    <link rel="shortcut icon" href="/favicon.ico" id="favicon">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="https://dmomot.com/favicon.ico" id="favicon">
+    <link rel="stylesheet" href="https://dmomot.com/css/style.css">
 
     
     <link rel="stylesheet" href="/highlight/styles/atom-one-dark.css">
@@ -37,45 +37,52 @@
         crossorigin="anonymous"></script>
     
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119385623-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119385623-1');
+    </script>
+    
 
 </head>
 
 </html>
 <body><div class="wrap"><div class="section" id="title">My First Post</div><div class="section" id="content">Wed May 16, 2018 &#183; 118 words
 
-<div><span id="tag"><a href="/tags/blog">blog</a></span><span id="tag"><a href="/tags/story">story</a></span></div><hr/>
+<div><span id="tag"><a href="https://dmomot.com/tags/blog">blog</a></span><span id="tag"><a href="https://dmomot.com/tags/story">story</a></span></div><hr/><h1 id="test-posts">Test posts</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor molestie viverra. Phasellus tristique auctor maximus. Nulla euismod, est sit amet varius ornare, ex nisl sodales justo, vitae euismod libero turpis sed turpis. Phasellus dapibus nec ligula at fringilla. Donec sit amet libero ornare mi viverra pharetra. Curabitur semper magna et nulla luctus, eu tincidunt lacus bibendum. Sed nec lacus eget nisl eleifend placerat nec ornare ligula. Sed faucibus diam at arcu hendrerit aliquam. ©</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#f92672">package</span> <span style="color:#a6e22e">usecases</span>
 
-<h1 id="test-posts">Test posts</h1>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor molestie viverra. Phasellus tristique auctor maximus. Nulla euismod, est sit amet varius ornare, ex nisl sodales justo, vitae euismod libero turpis sed turpis. Phasellus dapibus nec ligula at fringilla. Donec sit amet libero ornare mi viverra pharetra. Curabitur semper magna et nulla luctus, eu tincidunt lacus bibendum. Sed nec lacus eget nisl eleifend placerat nec ornare ligula. Sed faucibus diam at arcu hendrerit aliquam. &copy;</p>
-
-<pre><code class="language-golang">package usecases
-
-// Predefined roles
-const (
-	RoleAdmin    = &quot;admin&quot;
-	RoleCustomer = &quot;customer&quot;
+<span style="color:#75715e">// Predefined roles
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">RoleAdmin</span>    = <span style="color:#e6db74">&#34;admin&#34;</span>
+	<span style="color:#a6e22e">RoleCustomer</span> = <span style="color:#e6db74">&#34;customer&#34;</span>
 )
 
-// Role struct
-type Role struct {
-	ID           string `gorm:&quot;primary_key;type:varchar(50)&quot;`
-	Title        string
-	IsSystemRole bool
+<span style="color:#75715e">// Role struct
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Role</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">ID</span>           <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`gorm:&#34;primary_key;type:varchar(50)&#34;`</span>
+	<span style="color:#a6e22e">Title</span>        <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">IsSystemRole</span> <span style="color:#66d9ef">bool</span>
 }
 
-// RoleRepository interface
-type RoleRepository interface {
-	GetByID(id string) (Role, error)
+<span style="color:#75715e">// RoleRepository interface
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RoleRepository</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">GetByID</span>(<span style="color:#a6e22e">id</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">Role</span>, <span style="color:#66d9ef">error</span>)
 }
-</code></pre>
-</div><div class="section bottom-menu"><hr/><p><a href="/posts">back</a>
+</code></pre></div></div><div class="section bottom-menu"><hr/><p><a href="/posts">back</a>
  &#183;
-<a href="/about">whois</a>
+<a href="/about/">whois</a>
 
 
-&#183; <a href="/posts">notes</a>
+&#183; <a href="/posts/">notes</a>
 &#183; <a href="https://www.linkedin.com/in/dmitrymomot/">linkedin</a>
 &#183; <a href="https://github.com/dmitrymomot">github</a>
 
-&#183; <a href="/">main</a></p></div><div class="section footer">2018 © Dmitry Momot</div></div></body>
+&#183; <a href="https://dmomot.com/">main</a></p></div><div class="section footer"><small>Built with Hugo. Theme by Vicky Lai. Hosted on GitHub.</small>
+<br/>
+<small>2018 © Dmitry Momot.</small>
+</div></div></body>

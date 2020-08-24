@@ -1,10 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://dmomot.com/about/</loc>
-    <lastmod>2018-05-17T01:12:09+03:00</lastmod>
+    <lastmod>2020-08-24T12:38:09+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/tags/blog/</loc>
+    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/</loc>
+    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/tags/story/</loc>
+    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/tags/</loc>
+    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/posts/seconf-one/</loc>
+    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/posts/my-first-post/</loc>
+    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
   </url>
   
   <url>
@@ -14,18 +44,6 @@
   
   <url>
     <loc>https://dmomot.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/</loc>
-    <lastmod>2018-05-17T01:12:09+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
