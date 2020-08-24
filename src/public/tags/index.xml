@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Dmitry Momot</title>
+    <link>https://dmomot.com/tags/</link>
+    <description>Recent content in Tags on Dmitry Momot</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 May 2018 10:46:17 +0300</lastBuildDate>
+    
+	<atom:link href="https://dmomot.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>blog</title>
+      <link>https://dmomot.com/tags/blog/</link>
+      <pubDate>Thu, 17 May 2018 10:46:17 +0300</pubDate>
+      
+      <guid>https://dmomot.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>story</title>
+      <link>https://dmomot.com/tags/story/</link>
+      <pubDate>Thu, 17 May 2018 10:46:17 +0300</pubDate>
+      
+      <guid>https://dmomot.com/tags/story/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
