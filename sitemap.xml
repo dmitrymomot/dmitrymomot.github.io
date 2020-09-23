@@ -8,33 +8,8 @@
   </url>
   
   <url>
-    <loc>https://dmomot.com/tags/blog/</loc>
-    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dmomot.com/</loc>
-    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/tags/story/</loc>
-    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/tags/</loc>
-    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/posts/seconf-one/</loc>
-    <lastmod>2018-05-17T10:46:17+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dmomot.com/posts/my-first-post/</loc>
-    <lastmod>2018-05-16T23:26:06+03:00</lastmod>
+    <lastmod>2018-02-13T12:21:57-05:00</lastmod>
   </url>
   
   <url>
@@ -44,6 +19,10 @@
   
   <url>
     <loc>https://dmomot.com/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://dmomot.com/tags/</loc>
   </url>
   
 </urlset>
