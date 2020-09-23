@@ -2,9 +2,9 @@ baseurl                 = "https://dmomot.com/"               # Your domain name
 languageCode            = "en-us"
 title                   = "Dmitry Momot"
 theme                   = "sam"
-# pygmentsStyle           = "native"                     # https://help.farbox.com/pygments.html
-# pygmentsCodefences      = true
-googleAnalytics       = "UA-119385623-1"             # Tracking code, eg. "UA-111111111-1"
+# pygmentsStyle         = "native"                     # https://help.farbox.com/pygments.html
+# pygmentsCodefences    = true
+googleAnalytics         = "UA-119385623-1"             # Tracking code, eg. "UA-111111111-1"
 
 [params]
     uglyurls            = true
@@ -15,7 +15,7 @@ googleAnalytics       = "UA-119385623-1"             # Tracking code, eg. "UA-11
     galleryFolder       = "images/"
     clickablePhotos     = true
     footerText          = "Built with Hugo. Theme by Vicky Lai. Hosted on GitHub."
-    copyright           = "2018 © Dmitry Momot."
+    copyright           = "2020 © Dmitry Momot."
 # Metadata
     description         = "Personal site of Dmitry Momot."
     # twitterCard         = "summary_large_image"
