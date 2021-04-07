@@ -14,7 +14,7 @@ Or you can download my [CV](https://docs.google.com/document/d/1Ci_GizCydvOkdw1z
 
 ## Technical Background
 
-Over 11 years’ web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than 5 years of experience in the management of small teams.
+Over 12 years' web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than five years of experience in the management of small teams. A lot of experience with the following technologies: Golang, PHP (Laravel), VueJs, Kubernetes, Docker, AWS.
 
 ### Skills
 ---

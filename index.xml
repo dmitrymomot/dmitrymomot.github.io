@@ -6,11 +6,7 @@
     <description>Recent content on Dmitry Momot</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Feb 2018 12:21:57 -0500</lastBuildDate>
-    
-	<atom:link href="https://dmomot.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 13 Feb 2018 12:21:57 -0500</lastBuildDate><atom:link href="https://dmomot.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://dmomot.com/about/</link>
@@ -19,7 +15,7 @@
       <guid>https://dmomot.com/about/</guid>
       <description>Hi,
 My name is Dmitry Momot (Dmytro Momot) and I&amp;rsquo;m traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on Instagram. Or you can download my CV
-Technical Background Over 11 years’ web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than 5 years of experience in the management of small teams.</description>
+Technical Background Over 12 years&#39; web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than five years of experience in the management of small teams.</description>
     </item>
     
   </channel>
