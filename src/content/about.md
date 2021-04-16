@@ -31,7 +31,8 @@ Have experience with the following domains: on-demand services, fintech, marketi
 - CI/CD (Jenkins, CircleCI, Bitbucket Pipelines, Gitlab Pipelines)
 - APNS, GCM, Firebase
 - Scrum, Kanban
-- Basic knowledge of Keras, TensorFlow, and SciKit, but without experience in the real world. - Basics of the Flutter and NativeScript (building of cross-platform mobile applications)
+- Basic knowledge of Keras, TensorFlow, and SciKit, but without experience in the real world.
+- Basics of the Flutter and NativeScript (building of cross-platform mobile applications)
 
 ...And much more related to my main stack technologies.
 
