@@ -35,7 +35,7 @@ Have experience with the following domains: on-demand services, fintech, marketi
 ...And much more related to my main stack technologies.
 
 
-> You can request my **CV** via **mail[at]dmomot.com**
+> You can request my **CV** via mail[at]dmomot.com or contact me in [Linkedin](https://www.linkedin.com/in/dmitrymomot/)
 
 
 ---
