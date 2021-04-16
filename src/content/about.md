@@ -8,13 +8,13 @@ weight: 10
 
 Hi,
 
-My name is Dmitry Momot (Dmytro Momot) and I'm traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on [Instagram](https://instagram.com/dmitrymomot).
-Or you can download my [CV](https://docs.google.com/document/d/1Ci_GizCydvOkdw1zczM4uW0uGEgx3gVfsEABtjcT8bY/edit?usp=sharing)
+My name is Dmitry Momot (Dmytro Momot) and I'm a traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on [Instagram](https://instagram.com/dmitrymomot).
 
 
 ## Technical Background
 
-Over 12 years' web development experience, with a proven background of successfully managing all phases of web application development, from initial design and architecture to deployment and support. More than five years of experience in the management of small teams. A lot of experience with the following technologies: Golang, PHP (Laravel), VueJs, Kubernetes, Docker, AWS.
+Over 12 years’ web development experience, with a proven background of successfully managing web application development phases, from initial design and architecture to deployment and support. More than five years of experience in the management of the R&D teams.
+Have experience with the following domains: on-demand services, fintech, marketing, recruitment (ATS).
 
 ### Skills
 ---
@@ -26,13 +26,17 @@ Over 12 years' web development experience, with a proven background of successfu
 - RPC, CQRS, gRPC, queues, WebSockets
 - Docker, Docker Swarm, Kubernetes
 - Consul, self-written SD
-- Stripe (payment gateway)
 - AWS, DO, Firebase, GCP
 - CI/CD (Jenkins, CircleCI, Bitbucket Pipelines, Gitlab Pipelines)
 - APNS, GCM, Firebase
 - Scrum, Kanban
-- Basic knowledge of Keras, TensorFlow, and SciKit, but without experience in the real world.
-- Basics of the Flutter and NativeScript (building of cross-platform mobile applications)
+- Basic knowledge of Keras, TensorFlow, and SciKit, but without experience in the real world. - Basics of the Flutter and NativeScript (building of cross-platform mobile applications)
+
+...And much more related to my main stack technologies.
+
+
+> You can request my **CV** via **mail[at]dmomot.com**
+
 
 ---
 P.S. Only remote work. Thanks for understanding.
