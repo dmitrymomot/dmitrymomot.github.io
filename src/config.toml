@@ -36,3 +36,8 @@ googleAnalytics         = "UA-119385623-1"             # Tracking code, eg. "UA-
 [[params.mainMenu]]
     link = "https://github.com/dmitrymomot"
     text = "github"
+
+[[params.mainMenu]]
+    link = "https://calendly.com/dmitrymomot"
+    text = "book online meeting → 🗓"
+

@@ -40,5 +40,7 @@ Have experience with the following domains: on-demand services, fintech, marketi
 
 *You can request my **CV** via mail[at]dmomot.com or contact me in [Linkedin](https://www.linkedin.com/in/dmitrymomot/)*
 
+Also you can book online meeting with me [here](https://calendly.com/dmitrymomot).
+
 ---
 P.S. Only remote work. Thanks for understanding.
