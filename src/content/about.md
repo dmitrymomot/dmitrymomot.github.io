@@ -1,6 +1,6 @@
 ---
 title: "About"
-date: 2020-08-24T12:38:09+03:00
+date: 2022-05-06T10:28:09+03:00
 draft: false
 showDate: true
 weight: 10
@@ -13,9 +13,9 @@ My name is Dmitry Momot (Dmytro Momot) and I'm a traveler and freelancer from Ky
 
 ## Technical Background
 
-Over 12 years’ web development experience, with a proven background of successfully managing web application development phases, from initial design and architecture to deployment and support. More than five years of experience in the management of the R&D teams.
+Over 13 years’ web development experience, with a proven background of successfully managing web/mobile application development phases, from initial design and architecture to deployment and support. More than seven years of experience in the management of the R&D teams.
 
-Have experience with the following domains: on-demand services, fintech, marketing, recruitment (ATS).
+Have experience with the following domains: on-demand services, fintech, marketing, recruitment (ATS), and blockchain.
 
 ### Skills
 ---
