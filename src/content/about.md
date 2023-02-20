@@ -1,6 +1,6 @@
 ---
 title: "About"
-date: 2022-05-06T10:28:09+03:00
+date: 2023-02-20T22:18:09+02:00
 draft: false
 showDate: true
 weight: 10
@@ -8,33 +8,32 @@ weight: 10
 
 Hi,
 
-My name is Dmitry Momot (Dmytro Momot) and I'm a traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on [Instagram](https://instagram.com/dmitrymomot).
+My name is Dmytro Momot and I'm a traveler and freelancer from Kyiv, Ukraine. If you love traveling like me, follow me on [Instagram](https://instagram.com/dmitrymomot).
 
 
 ## Technical Background
 
-Over 13 years’ web development experience, with a proven background of successfully managing web/mobile application development phases, from initial design and architecture to deployment and support. More than seven years of experience in the management of the R&D teams.
+With over 14 years of experience in web development, I have a proven track record of managing the entire web/mobile application development life cycle, from initial design and architecture to deployment and support. Additionally, I have over seven years of experience leading and managing R&D teams.
 
-Have experience with the following domains: on-demand services, fintech, marketing, recruitment (ATS), and blockchain.
+Throughout my career, I have gained expertise in several domains, including on-demand services, fintech, marketing, recruitment (ATS), and blockchain. My technical proficiency and experience enable me to provide valuable insights and solutions to complex problems in these domains.
 
-### Skills
----
-- Advanced knowledge of Golang and PHP
-- API design knowledge, SOA, microservice architecture, the clean architecture
-- Middle knowledge of front-end web development (VueJs, NuxtJs, HTML/CSS)
-- Base knowledge of Ruby (RoR) and Python (Flask, Keras)
-- MySQL, PostgreSQL, MongoDB, Redis, Memcached
-- RPC, CQRS, gRPC, queues, WebSockets
-- Docker, Docker Swarm, Kubernetes
-- Consul, self-written SD
-- AWS, DO, Firebase, GCP
-- CI/CD (Jenkins, CircleCI, Bitbucket Pipelines, Gitlab Pipelines)
-- APNS, GCM, Firebase
-- Scrum, Kanban
-- Basic knowledge of Keras, TensorFlow, and SciKit, but without experience in the real world.
-- Basics of the Flutter and NativeScript (building of cross-platform mobile applications)
+I am passionate about staying up-to-date with the latest technologies and industry trends and consistently seek opportunities for professional growth and development. My strong communication skills and technical expertise allow me to collaborate effectively with teams and stakeholders at all levels of an organization.
 
-...And much more related to my main stack technologies.
+Feel free to contact me. I'm always open to new opportunities.
+
+## My Skills
+
+* **Languages:** Golang, PHP, JavaScript.
+
+* **Frameworks:** Gin, Echo, go-chi, Vue, NextJs, Flask, Laravel, and more.
+
+* **Databases:** MySQL, PostgreSQL, MongoDB, Redis, ElasticSearch.
+
+* **Cloud:** AWS, DigitalOcean, Firebase.
+
+* **DevOps:** Docker, Kubernetes, Jenkins, GitLab CI.
+
+* **Other:** Linux, Bash, Git, Jira, Confluence, etc.
 
 ---
 
