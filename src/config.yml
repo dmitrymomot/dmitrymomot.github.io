@@ -5,6 +5,7 @@ site:
   author: "Dmytro Momot"
   email: "mail@dmomot.com"
   build: "2024-12-07"
+  rel_path: "/"
 
 # Social Links
 social:
