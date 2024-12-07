@@ -9,7 +9,7 @@ export default {
       "&:is(.dark *)",
     ],
   ],
-  content: ["./src/templates/*.html"],
+  content: ["./templates/*.html"],
   theme: {
     extend: {
       fontFamily: {
