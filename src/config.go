@@ -15,6 +15,7 @@ type SiteConfig struct {
 	Description string `yaml:"description"`
 	Author      string `yaml:"author"`
 	Email       string `yaml:"email"`
+	Build       string `yaml:"build"`
 }
 
 type SocialConfig struct {

@@ -10,7 +10,13 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// Build information
+var commit = "unknown"
+
 func main() {
+	fmt.Printf("Build commit: %s\n", commit)
+
+	// Create a new context with a cancel function
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
@@ -24,6 +30,10 @@ func main() {
 	var cfg Config
 	if err := yaml.Unmarshal(configData, &cfg); err != nil {
 		panic(fmt.Errorf("error parsing config: %w", err))
+	}
+
+	if commit != "unknown" && commit != "" {
+		cfg.Site.Build = commit
 	}
 
 	// Initialize template engine

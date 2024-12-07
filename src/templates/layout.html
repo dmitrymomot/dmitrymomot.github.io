@@ -9,12 +9,12 @@
     <meta name="author" content="{{.Site.Author}}">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="assets/styles.css" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
-    <link rel="manifest" href="assets/site.webmanifest" />
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link href="assets/styles.css?v{{.Site.Build}}" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v{{.Site.Build}}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png?v{{.Site.Build}}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png?v{{.Site.Build}}" />
+    <link rel="manifest" href="assets/site.webmanifest?v{{.Site.Build}}" />
+    <link rel="shortcut icon" href="assets/favicon.ico?v{{.Site.Build}}" type="image/x-icon" />
   </head>
   <body class="min-h-screen bg-black text-white">
     <div id="particles-js" class="absolute inset-0 -z-10"></div>
@@ -63,6 +63,6 @@
     {{embed}}
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="assets/script.js"></script>
+    <script src="assets/script.js?v{{.Site.Build}}"></script>
   </body>
 </html>

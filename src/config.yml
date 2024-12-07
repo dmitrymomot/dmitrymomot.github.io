@@ -4,6 +4,7 @@ site:
   description: "Personal website of Dmytro Momot, an engineering leader with expertise in distributed systems and team leadership."
   author: "Dmytro Momot"
   email: "mail@dmomot.com"
+  build: "2024-12-07"
 
 # Social Links
 social:

@@ -6,9 +6,10 @@ build:
 		-i ./assets/tailwind.css \
 		-o ../assets/styles.css
 	mkdir -p ./build
-	go run .
+	go build -ldflags "-X main.commit=$(shell git rev-parse HEAD)" -o pagebuilder
+	./pagebuilder
 	cp -rf ./build/*.html ../
-	rm -rf ./build
+	rm -rf ./build ./pagebuilder
 	echo "Done!"
 
 .PHONY: deploy
