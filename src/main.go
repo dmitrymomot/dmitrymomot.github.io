@@ -15,7 +15,7 @@ func main() {
 	defer cancel()
 
 	// Read config file
-	configData, err := os.ReadFile("src/config.yml")
+	configData, err := os.ReadFile("config.yml")
 	if err != nil {
 		panic(fmt.Errorf("error reading config file: %w", err))
 	}
@@ -27,7 +27,7 @@ func main() {
 	}
 
 	// Initialize template engine
-	tmpl, err := templatex.New("src/templates", nil)
+	tmpl, err := templatex.New("templates", nil)
 	if err != nil {
 		panic(fmt.Errorf("error initializing template engine: %w", err))
 	}
@@ -37,7 +37,7 @@ func main() {
 	if err != nil {
 		panic(fmt.Errorf("error rendering index.html: %w", err))
 	}
-	if err := os.WriteFile(filepath.Join("public", "index.html"), []byte(indexHTML), 0644); err != nil {
+	if err := os.WriteFile(filepath.Join("build", "index.html"), []byte(indexHTML), 0644); err != nil {
 		panic(fmt.Errorf("error writing index.html: %w", err))
 	}
 
@@ -46,7 +46,7 @@ func main() {
 	if err != nil {
 		panic(fmt.Errorf("error rendering 404.html: %w", err))
 	}
-	if err := os.WriteFile(filepath.Join("public", "404.html"), []byte(notFoundHTML), 0644); err != nil {
+	if err := os.WriteFile(filepath.Join("build", "404.html"), []byte(notFoundHTML), 0644); err != nil {
 		panic(fmt.Errorf("error writing 404.html: %w", err))
 	}
 
