@@ -1,0 +1,143 @@
+# Site Configuration
+site:
+  title: "Dmytro Momot - Engineering Leader & Tech Innovator"
+  description: "Personal website of Dmytro Momot, an engineering leader with expertise in distributed systems and team leadership."
+  author: "Dmytro Momot"
+  email: "mail@dmomot.com"
+
+# Social Links
+social:
+  github: "https://github.com"
+  linkedin: "https://linkedin.com"
+  twitter: "https://twitter.com"
+
+# Header Content
+header:
+  title:
+    - "Empowering Teams"
+    - "Scaling Systems"
+    - "Driving Innovation"
+  description: "I'm Dmytro, a technology leader who transforms engineering teams and complex systems into high-performing assets. With 15+ years of experience, I help companies scale their tech operations and drive innovation."
+  cta:
+    - label: "Contact Me"
+      url: "mailto:mail@dmomot.com"
+      icon: "mail"
+    - label: "Schedule a Call"
+      url: "https://example.com"
+      icon: "calendar"
+
+# Services Section
+services:
+  title: "You Can Ask Me For"
+  items:
+    - title: "Technical Interview"
+      description: "Conduct thorough technical assessments to identify top talent for your engineering team."
+      icon: "users" # This refers to the Feather icon name
+
+    - title: "Technology Consulting"
+      description: "Provide expert advice on technology stack selection, best practices, and strategic technical decisions."
+      icon: "cloud"
+
+    - title: "Architecture Design"
+      description: "Design scalable and robust system architectures that can handle complex requirements and high traffic loads."
+      icon: "layout"
+
+    - title: "Technical Leadership"
+      description: "Guide and mentor engineering teams to deliver high-quality software solutions and foster a culture of innovation."
+      icon: "edit"
+
+# Projects Section
+projects:
+  title: "Featured Projects"
+  profile_link: "https://www.linkedin.com/in/dmitrymomot"
+  items:
+    - title: "PIN-UP.TECH"
+      url: "https://pin-up.tech"
+      description: "Led the API Stream team, designing and optimizing core APIs for scalability and performance."
+      tags:
+        - "Team Leadership"
+        - "API Design"
+        - "Scalability"
+
+    - title: "Sator Platform"
+      url: "https://sator.io"
+      description: "Built and launched a Web3 entertainment platform, leading a team of 15 engineers."
+      tags:
+        - "Web3"
+        - "Entertainment"
+        - "Team Building"
+
+    - title: "Stafferly ATS"
+      description: "Co-founded and developed an applicant tracking system to automate recruitment processes."
+      tags:
+        - "Startup"
+        - "ATS"
+        - "Automation"
+
+    - title: "Washé Mobile App"
+      description: "Architected and scaled a mobile car wash platform connecting users with service providers."
+      tags:
+        - "Mobile"
+        - "Architecture"
+        - "Scaling"
+
+# Technical Expertise Section
+expertise:
+  title: "Technical Expertise"
+  categories:
+    - title: "Backend Development"
+      icon: "code"
+      skills:
+        - "Advanced Golang Development"
+        - "PHP (Laravel, Lumen)"
+        - "Node.js"
+        - "Python"
+
+    - title: "System Architecture"
+      icon: "layout"
+      skills:
+        - "Microservices Architecture"
+        - "Event-Driven Systems"
+        - "High-Load Applications"
+        - "API Design & Development"
+
+    - title: "Infrastructure & DevOps"
+      icon: "server"
+      skills:
+        - "Docker & Kubernetes"
+        - "AWS Cloud Services"
+        - "CI/CD (Jenkins, GitLab)"
+        - "Infrastructure as Code"
+
+    - title: "Frontend & Mobile"
+      icon: "globe"
+      skills:
+        - "Vue.js & Nuxt.js"
+        - "React & Next.js"
+        - "Flutter Development"
+        - "Svelte & SvelteKit"
+
+    - title: "Data & Storage"
+      icon: "database"
+      skills:
+        - "PostgreSQL & MySQL"
+        - "MongoDB"
+        - "Redis & Memcached"
+        - "Elasticsearch"
+
+    - title: "Communication"
+      icon: "users"
+      skills:
+        - "gRPC & RPC"
+        - "NATS & RabbitMQ"
+        - "Kafka & Message Queues"
+        - "WebSockets"
+
+# Footer Configuration
+footer:
+  copyright: "© 2024 Dmytro Momot"
+  license:
+    text: "Personal Website"
+    url: "https://github.com/dmitrymomot/dmitrymomot.github.io"
+    license_type: "CC BY-NC-ND 4.0"
+    license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0"
