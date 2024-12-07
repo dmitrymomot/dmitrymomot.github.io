@@ -1,10 +1,9 @@
 # Site Configuration
 site:
-  title: "Dmytro Momot - Engineering Leader & Tech Innovator"
+  title: "Dmytro Momot - Engineering Leader & Software Architect"
   description: "Personal website of Dmytro Momot, an engineering leader with expertise in distributed systems and team leadership."
   author: "Dmytro Momot"
-  email: "mail@dmomot.com"
-  build: "2024-12-07"
+  email: "mail+website@dmomot.com"
   rel_path: "/"
 
 # Social Links
