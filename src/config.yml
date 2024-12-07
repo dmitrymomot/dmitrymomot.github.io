@@ -9,9 +9,9 @@ site:
 
 # Social Links
 social:
-  github: "https://github.com"
-  linkedin: "https://linkedin.com"
-  twitter: "https://twitter.com"
+  github: "https://github.com/dmitrymomot"
+  linkedin: "https://www.linkedin.com/in/dmitrymomot"
+  twitter: "https://twitter.com/dmitry_momot"
 
 # Header Content
 header:
@@ -25,7 +25,7 @@ header:
       url: "mailto:mail@dmomot.com"
       icon: "mail"
     - label: "Schedule a Call"
-      url: "https://example.com"
+      url: "https://calendly.com/dmitrymomot"
       icon: "calendar"
 
 # Services Section
@@ -55,85 +55,87 @@ projects:
   items:
     - title: "PIN-UP.TECH"
       url: "https://pin-up.tech"
-      description: "Led the API Stream team, designing and optimizing core APIs for scalability and performance."
+      description: "Led engineering team through monolith to microservices transformation, significantly improving system stability and reliability."
       tags:
         - "Team Leadership"
-        - "API Design"
-        - "Scalability"
+        - "Monolith to Microservices"
+        - "Reliability"
 
     - title: "Sator Platform"
       url: "https://sator.io"
       description: "Built and launched a Web3 entertainment platform, leading a team of 15 engineers."
       tags:
         - "Web3"
-        - "Entertainment"
+        - "Product Launch"
         - "Team Building"
 
     - title: "Stafferly ATS"
+      url: "https://stafferly.io"
       description: "Co-founded and developed an applicant tracking system to automate recruitment processes."
       tags:
         - "Startup"
         - "ATS"
-        - "Automation"
+        - "Co-Founder"
 
     - title: "Washé Mobile App"
-      description: "Architected and scaled a mobile car wash platform connecting users with service providers."
+      url: "https://washe.io"
+      description: "Architected and scaled an on-demand car wash system with native mobile apps, analytics dashboard, and distributed backend infrastructure."
       tags:
         - "Mobile"
+        - "System Design"
         - "Architecture"
-        - "Scaling"
 
 # Technical Expertise Section
 expertise:
   title: "Technical Expertise"
   categories:
-    - title: "Backend Development"
-      icon: "code"
+    - title: "Leadership & Management"
+      icon: "users"
       skills:
-        - "Advanced Golang Development"
-        - "PHP (Laravel, Lumen)"
-        - "Node.js"
-        - "Python"
+        - "Engineering Team Leadership"
+        - "Technical Team Building"
+        - "Hiring & Talent Development"
+        - "Mentoring & Coaching"
 
     - title: "System Architecture"
       icon: "layout"
       skills:
+        - "Distributed Systems Design"
         - "Microservices Architecture"
-        - "Event-Driven Systems"
+        - "Event Sourcing & CQRS"
         - "High-Load Applications"
+
+    - title: "Backend Development"
+      icon: "code"
+      skills:
+        - "Golang (Primary Language)"
         - "API Design & Development"
+        - "Event-Driven Systems"
+        - "gRPC & JSON-RPC"
+
+    - title: "Frontend & Mobile"
+      icon: "monitor"
+      skills:
+        - "React & Next.js"
+        - "Vue.js & Nuxt.js"
+        - "Svelte & SvelteKit"
+        - "Flutter Development"
 
     - title: "Infrastructure & DevOps"
       icon: "server"
       skills:
         - "Docker & Kubernetes"
-        - "AWS Cloud Services"
-        - "CI/CD (Jenkins, GitLab)"
+        - "CI/CD Automation"
+        - "DigitalOcean Cloud"
         - "Infrastructure as Code"
 
-    - title: "Frontend & Mobile"
-      icon: "globe"
-      skills:
-        - "Vue.js & Nuxt.js"
-        - "React & Next.js"
-        - "Flutter Development"
-        - "Svelte & SvelteKit"
-
-    - title: "Data & Storage"
+    - title: "Data & Communication"
       icon: "database"
       skills:
         - "PostgreSQL & MySQL"
-        - "MongoDB"
-        - "Redis & Memcached"
-        - "Elasticsearch"
-
-    - title: "Communication"
-      icon: "users"
-      skills:
-        - "gRPC & RPC"
-        - "NATS & RabbitMQ"
-        - "Kafka & Message Queues"
-        - "WebSockets"
+        - "MongoDB & Redis"
+        - "NATS Messaging"
+        - "WebSocket Solutions"
 
 # Footer Configuration
 footer:

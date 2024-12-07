@@ -34,22 +34,7 @@
       <div class="rounded-lg bg-white/5 p-6 transition-colors hover:bg-white/10">
         <div class="mb-4 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-6 w-6 text-emerald-500">
-            {{if eq .Icon "users"}}
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            {{else if eq .Icon "cloud"}}
-            <path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2c-.7-3-3.2-5.2-6.2-5.6-3-.3-5.9 1.3-7.3 4-1.2 2.5-1 5.5.5 7.7 1.4 2 3.7 3.2 6 3.2h9.7c1.6 0 3-1 3.6-2.4"></path>
-            <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
-            {{else if eq .Icon "layout"}}
-            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-            <path d="M3 9h18"></path>
-            <path d="M9 21V9"></path>
-            {{else if eq .Icon "edit"}}
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-            {{end}}
+            {{template "icons.html" .Icon}}
           </svg>
           <h3 class="text-lg font-semibold">{{.Title}}</h3>
         </div>
@@ -106,29 +91,7 @@
       <div class="rounded-lg bg-white/5 p-6 transition-colors hover:bg-white/10">
         <div class="mb-4 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-6 w-6 text-emerald-500">
-            {{if eq .Icon "code"}}
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-            {{else if eq .Icon "layout"}}
-            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-            <path d="M3 9h18"></path>
-            <path d="M9 21V9"></path>
-            {{else if eq .Icon "server"}}
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-            {{else if eq .Icon "globe"}}
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            {{else if eq .Icon "database"}}
-            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-            {{else if eq .Icon "users"}}
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            {{end}}
+            {{template "icons.html" .Icon}}
           </svg>
           <h3 class="text-lg font-semibold">{{.Title}}</h3>
         </div>
