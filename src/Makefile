@@ -14,3 +14,8 @@ build:
 .PHONY: deploy
 deploy: build
 	./deploy.sh
+
+.PHONY: live
+live:
+	@echo "Starting live reload server..."
+	@golive -d ../ -p 8080
