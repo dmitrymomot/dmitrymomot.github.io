@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Custom accent color */
+:root {
+  --accent-color: #9ECBFF;
+  --accent-hover: #7AB8FF;
+  --accent-dark: #79B8FF;
+  --accent-dark-hover: #9ECBFF;
+}
+
+/* Custom link styles */
+.link-accent {
+  color: var(--accent-color);
+}
+.link-accent:hover {
+  color: var(--accent-hover);
+}
+.dark .link-accent {
+  color: var(--accent-dark);
+}
+.dark .link-accent:hover {
+  color: var(--accent-dark-hover);
+}
+
+/* Custom button styles */
+.btn-accent {
+  background-color: var(--accent-color);
+  color: #1a1a1a;
+}
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+}
+.dark .btn-accent {
+  background-color: var(--accent-dark);
+  color: #1a1a1a;
+}
+.dark .btn-accent:hover {
+  background-color: var(--accent-dark-hover);
+}
+
+/* Custom Typography Styles */
+@layer base {
+  /* Font families */
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  
+  /* Base typography */
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "liga" 1, "calt" 1; /* Enable ligatures */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  /* Code blocks */
+  pre, code {
+    font-family: var(--font-mono);
+  }
+  
+  /* Selection colors */
+  ::selection {
+    background-color: rgba(158, 203, 255, 0.3);
+    @apply text-zinc-900 dark:text-zinc-100;
+  }
+}
+
+/* Prose styles for blog content */
+@layer components {
+  .prose-custom {
+    @apply text-zinc-700 dark:text-zinc-300;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75;
+  }
+  
+  .prose-custom h1 {
+    @apply text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-zinc-100;
+    line-height: 1.1;
+  }
+  
+  .prose-custom h2 {
+    @apply text-2xl md:text-3xl font-semibold mt-12 mb-6 text-zinc-900 dark:text-zinc-100;
+    line-height: 1.3;
+  }
+  
+  .prose-custom h3 {
+    @apply text-xl md:text-2xl font-semibold mt-8 mb-4 text-zinc-900 dark:text-zinc-100;
+  }
+  
+  .prose-custom p {
+    @apply mb-6;
+  }
+  
+  .prose-custom ul, .prose-custom ol {
+    @apply mb-6 ml-6 space-y-2;
+  }
+  
+  .prose-custom li {
+    @apply pl-2;
+  }
+  
+  .prose-custom blockquote {
+    @apply border-l-4 pl-4 italic my-6 text-zinc-600 dark:text-zinc-400;
+    border-left-color: var(--accent-color);
+  }
+  
+  .prose-custom code:not(pre code) {
+    @apply bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm font-medium;
+    font-size: 0.875em;
+  }
+  
+  .prose-custom pre {
+    @apply bg-zinc-900 dark:bg-black text-zinc-100 p-4 rounded-lg overflow-x-auto my-6;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  
+  .prose-custom a {
+    @apply underline underline-offset-2;
+    color: var(--accent-color);
+  }
+  
+  .prose-custom a:hover {
+    color: var(--accent-hover);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .dark .prose-custom a {
+      color: var(--accent-dark);
+    }
+    .dark .prose-custom a:hover {
+      color: var(--accent-dark-hover);
+    }
+  }
+  
+  .prose-custom table {
+    @apply w-full my-6 border-collapse;
+  }
+  
+  .prose-custom th {
+    @apply border-b-2 border-zinc-300 dark:border-zinc-700 pb-2 text-left font-semibold;
+  }
+  
+  .prose-custom td {
+    @apply border-b border-zinc-200 dark:border-zinc-800 py-2;
+  }
+  
+  .prose-custom img {
+    @apply rounded-lg my-8 mx-auto;
+  }
+  
+  .prose-custom hr {
+    @apply my-12 border-zinc-300 dark:border-zinc-700;
+  }
+}

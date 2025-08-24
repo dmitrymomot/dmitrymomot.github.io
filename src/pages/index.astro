@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+// Get home page content from markdown
+const homePage = await getEntry('pages', 'home');
+const { title, subtitle, description, about, services, social } = homePage.data;
+
+// Get latest blog posts
+const posts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const latestPosts = posts.slice(0, 3);
+---
+
+<Layout title={`${title} - ${subtitle}`} description={description}>
+  <main class="container mx-auto px-4 py-16 max-w-4xl">
+    <header class="mb-16">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight">{title}</h1>
+      <p class="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed">{subtitle}</p>
+    </header>
+
+    {about && (
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold mb-6">{about.title}</h2>
+        <div class="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-line">
+          {about.content}
+        </div>
+      </section>
+    )}
+
+    {services && (
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold mb-6">{services.title}</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {services.items.map((service) => (
+            <div class="border border-zinc-200 dark:border-zinc-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold mb-3">{service.title}</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold mb-6">Latest Blog Posts</h2>
+      {latestPosts.length > 0 ? (
+        <div class="space-y-6 mb-8">
+          {latestPosts.map((post) => (
+            <article class="border-b border-zinc-200 dark:border-zinc-700 pb-6">
+              <h3 class="text-xl font-semibold mb-2">
+                <a href={`/blog/${post.id}`} class="hover:text-[#9ECBFF] transition-colors">
+                  {post.data.title}
+                </a>
+              </h3>
+              <time class="text-sm text-zinc-500 dark:text-zinc-400">
+                {post.data.publishDate.toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </time>
+              <p class="mt-2 text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+            </article>
+          ))}
+        </div>
+      ) : null}
+      <a href="/blog" class="text-lg link-accent hover:underline font-medium">
+        View all posts →
+      </a>
+    </section>
+
+    <footer class="border-t border-zinc-200 dark:border-zinc-700 pt-8 mt-12">
+      <nav class="flex gap-6">
+        <a href="/blog" class="hover:underline">Blog</a>
+        {social?.github && (
+          <a href={social.github} target="_blank" class="hover:underline">GitHub</a>
+        )}
+        {social?.linkedin && (
+          <a href={social.linkedin} target="_blank" class="hover:underline">LinkedIn</a>
+        )}
+        {social?.twitter && (
+          <a href={social.twitter} target="_blank" class="hover:underline">Twitter</a>
+        )}
+      </nav>
+    </footer>
+  </main>
+</Layout>

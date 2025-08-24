@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+
+// Count posts per tag
+const tagCounts = new Map<string, number>();
+posts.forEach(post => {
+  post.data.tags.forEach(tag => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+
+// Sort tags by count (descending) then alphabetically
+const sortedTags = Array.from(tagCounts.entries())
+  .sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1]; // Sort by count
+    return a[0].localeCompare(b[0]); // Then alphabetically
+  });
+
+// Group tags by first letter for better organization
+const tagsByLetter = new Map<string, Array<[string, number]>>();
+sortedTags.forEach(([tag, count]) => {
+  const firstLetter = tag[0].toUpperCase();
+  if (!tagsByLetter.has(firstLetter)) {
+    tagsByLetter.set(firstLetter, []);
+  }
+  tagsByLetter.get(firstLetter)?.push([tag, count]);
+});
+
+// Sort letters alphabetically
+const sortedLetters = Array.from(tagsByLetter.keys()).sort();
+---
+
+<Layout title="All Tags - Dmytro Momot" description="Browse all tags from the blog">
+  <main class="container mx-auto px-4 py-16 max-w-4xl">
+    <!-- Header Section -->
+    <header class="mb-16 text-center max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+        All Tags
+      </h1>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400">
+        Browse {tagCounts.size} tags from {posts.length} blog posts
+      </p>
+    </header>
+
+    {/* Popular Tags Section */}
+    <section class="mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">Popular Tags</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        {sortedTags.slice(0, 10).map(([tag, count], index) => (
+          <a 
+            href={`/blog/tag/${tag}`}
+            class="group relative px-6 py-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-zinc-200 dark:border-zinc-700"
+          >
+            <span class="text-lg font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-[#9ECBFF] transition-colors">
+              #{tag}
+            </span>
+            <span class="absolute -top-2 -right-2 text-xs px-2 py-1 bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 rounded-full font-semibold">
+              {count}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    {/* All Tags Alphabetically */}
+    <section class="mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">All Tags A-Z</h2>
+      <div class="bg-zinc-50 dark:bg-zinc-800/30 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-200 dark:border-zinc-700">
+        <div class="space-y-8">
+          {sortedLetters.map(letter => (
+            <div>
+              <h3 class="text-sm font-bold text-zinc-500 dark:text-zinc-500 mb-3 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-700 pb-2">
+                {letter}
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {tagsByLetter.get(letter)?.map(([tag, count]) => (
+                  <a 
+                    href={`/blog/tag/${tag}`}
+                    class="group flex items-center justify-between px-4 py-2.5 bg-white dark:bg-zinc-800 rounded-lg hover:shadow-md transition-all duration-200 hover:scale-[1.02] border border-zinc-100 dark:border-zinc-700"
+                  >
+                    <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-[#9ECBFF] transition-colors truncate mr-2">
+                      {tag}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-600 dark:text-zinc-400 flex-shrink-0">
+                      {count}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Tag Cloud Visualization */}
+    <section class="mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">Tag Cloud</h2>
+      <div class="relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-800/30 dark:to-zinc-900/30 rounded-2xl p-12 border border-zinc-200 dark:border-zinc-700 overflow-hidden">
+        <div class="flex flex-wrap gap-3 justify-center items-center">
+          {sortedTags.map(([tag, count]) => {
+            // Calculate font size based on count (min 0.875rem, max 2.5rem)
+            const maxCount = sortedTags[0][1];
+            const minSize = 0.875;
+            const maxSize = 2.5;
+            const size = minSize + (count / maxCount) * (maxSize - minSize);
+            
+            // Calculate opacity based on count (min 0.6, max 1)
+            const opacity = 0.6 + (count / maxCount) * 0.4;
+            
+            return (
+              <a 
+                href={`/blog/tag/${tag}`}
+                class="hover:text-[#9ECBFF] transition-all duration-300 hover:scale-110 font-medium"
+                style={{
+                  fontSize: `${size}rem`,
+                  opacity: opacity,
+                  color: count > maxCount * 0.7 ? '#9ECBFF' : undefined
+                }}
+              >
+                {tag}
+              </a>
+            );
+          })}
+        </div>
+        {/* Decorative gradient orbs */}
+        <div class="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-[#9ECBFF] to-transparent opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-tr from-[#79B8FF] to-transparent opacity-10 rounded-full blur-3xl"></div>
+      </div>
+    </section>
+
+    {/* Navigation */}
+    <nav class="flex justify-center">
+      <a 
+        href="/blog" 
+        class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to all posts
+      </a>
+    </nav>
+  </main>
+</Layout>
