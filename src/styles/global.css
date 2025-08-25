@@ -165,6 +165,13 @@
     @apply italic text-zinc-200;
   }
   
+  .prose-custom mark {
+    background-color: rgba(158, 203, 255, 0.4);
+    @apply text-zinc-100 px-1 rounded;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+  }
+  
   .prose-custom table {
     @apply w-full my-8 border-collapse overflow-hidden rounded-lg;
   }
