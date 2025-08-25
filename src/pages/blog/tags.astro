@@ -39,10 +39,10 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
   <main class="container mx-auto px-4 py-16 max-w-4xl">
     <!-- Header Section -->
     <header class="mb-16 text-center max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
         All Tags
       </h1>
-      <p class="text-lg text-zinc-600 dark:text-zinc-400">
+      <p class="text-lg text-zinc-400">
         Browse {tagCounts.size} tags from {posts.length} blog posts
       </p>
     </header>
@@ -54,12 +54,12 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
         {sortedTags.slice(0, 10).map(([tag, count], index) => (
           <a 
             href={`/blog/tag/${tag}`}
-            class="group relative px-6 py-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-zinc-200 dark:border-zinc-700"
+            class="group relative px-6 py-3 bg-zinc-800/50 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-zinc-700"
           >
-            <span class="text-lg font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-[#9ECBFF] transition-colors">
+            <span class="text-lg font-medium text-zinc-200 group-hover:text-[#9ECBFF] transition-colors">
               #{tag}
             </span>
-            <span class="absolute -top-2 -right-2 text-xs px-2 py-1 bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 rounded-full font-semibold">
+            <span class="absolute -top-2 -right-2 text-xs px-2 py-1 bg-zinc-100 text-zinc-900 rounded-full font-semibold">
               {count}
             </span>
           </a>
@@ -70,23 +70,23 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
     {/* All Tags Alphabetically */}
     <section class="mb-16 max-w-3xl mx-auto">
       <h2 class="text-3xl font-bold mb-8 text-center">All Tags A-Z</h2>
-      <div class="bg-zinc-50 dark:bg-zinc-800/30 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-200 dark:border-zinc-700">
+      <div class="bg-zinc-800/30 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-700">
         <div class="space-y-8">
           {sortedLetters.map(letter => (
             <div>
-              <h3 class="text-sm font-bold text-zinc-500 dark:text-zinc-500 mb-3 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-700 pb-2">
+              <h3 class="text-sm font-bold text-zinc-500 text-zinc-500 mb-3 uppercase tracking-wider border-b border-zinc-700 pb-2">
                 {letter}
               </h3>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {tagsByLetter.get(letter)?.map(([tag, count]) => (
                   <a 
                     href={`/blog/tag/${tag}`}
-                    class="group flex items-center justify-between px-4 py-2.5 bg-white dark:bg-zinc-800 rounded-lg hover:shadow-md transition-all duration-200 hover:scale-[1.02] border border-zinc-100 dark:border-zinc-700"
+                    class="group flex items-center justify-between px-4 py-2.5 bg-zinc-800 rounded-lg hover:shadow-md transition-all duration-200 hover:scale-[1.02] border border-zinc-700"
                   >
-                    <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-[#9ECBFF] transition-colors truncate mr-2">
+                    <span class="text-sm font-medium text-zinc-300 group-hover:text-[#9ECBFF] transition-colors truncate mr-2">
                       {tag}
                     </span>
-                    <span class="text-xs px-2 py-0.5 bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-600 dark:text-zinc-400 flex-shrink-0">
+                    <span class="text-xs px-2 py-0.5 bg-zinc-700 rounded-full text-zinc-400 flex-shrink-0">
                       {count}
                     </span>
                   </a>
@@ -101,7 +101,7 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
     {/* Tag Cloud Visualization */}
     <section class="mb-16 max-w-3xl mx-auto">
       <h2 class="text-3xl font-bold mb-8 text-center">Tag Cloud</h2>
-      <div class="relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-800/30 dark:to-zinc-900/30 rounded-2xl p-12 border border-zinc-200 dark:border-zinc-700 overflow-hidden">
+      <div class="relative bg-gradient-to-br from-zinc-800/30 to-zinc-900/30 rounded-2xl p-12 border border-zinc-700 overflow-hidden">
         <div class="flex flex-wrap gap-3 justify-center items-center">
           {sortedTags.map(([tag, count]) => {
             // Calculate font size based on count (min 0.875rem, max 2.5rem)
@@ -138,7 +138,7 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
     <nav class="flex justify-center">
       <a 
         href="/blog" 
-        class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200"
+        class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
           <line x1="19" y1="12" x2="5" y2="12"></line>

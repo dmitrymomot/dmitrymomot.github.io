@@ -21,16 +21,16 @@ const { page } = Astro.props;
   <main class="container mx-auto px-4 py-16 max-w-4xl">
     <!-- Header Section -->
     <header class="mb-16 text-center max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
         Blog
       </h1>
-      <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
+      <p class="text-lg text-zinc-400 mb-8">
         Thoughts on software development, architecture, and technology
       </p>
       <div class="flex justify-center gap-4">
         <a 
           href="/blog/tags" 
-          class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200"
+          class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
         >
           Browse All Tags
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
@@ -57,7 +57,7 @@ const { page } = Astro.props;
         return (
         <article class="group relative mt-4">
           <!-- Date Badge -->
-          <div class="absolute -top-3 left-8 px-4 py-1 bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 rounded-full text-xs font-semibold z-10">
+          <div class="absolute -top-3 left-8 px-4 py-1 bg-zinc-100 text-zinc-900 rounded-full text-xs font-semibold z-10">
             {post.data.publishDate.toLocaleDateString('en-US', { 
               month: 'short', 
               day: 'numeric',
@@ -66,7 +66,7 @@ const { page } = Astro.props;
           </div>
           
           <!-- Card Content -->
-          <div class="relative bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-zinc-200 dark:border-zinc-700 overflow-hidden">
+          <div class="relative bg-zinc-800/50 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-zinc-700 overflow-hidden">
             <!-- Content -->
             <div class="space-y-4">
             <h2 class="text-2xl md:text-3xl font-bold leading-tight">
@@ -75,7 +75,7 @@ const { page } = Astro.props;
               </a>
             </h2>
             
-            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+            <p class="text-zinc-400 leading-relaxed line-clamp-3">
               {post.data.description}
             </p>
             
@@ -85,7 +85,7 @@ const { page } = Astro.props;
                 {post.data.tags.slice(0, 3).map((tag) => (
                   <a 
                     href={`/blog/tag/${tag}`}
-                    class="text-xs px-3 py-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-colors"
+                    class="text-xs px-3 py-1.5 bg-zinc-700 rounded-full hover:bg-zinc-600 transition-colors"
                   >
                     #{tag}
                   </a>
@@ -192,7 +192,7 @@ const { page } = Astro.props;
           {page.url.prev ? (
             <a 
               href={page.url.prev} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200"
+              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -201,7 +201,7 @@ const { page } = Astro.props;
               Previous
             </a>
           ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-600 rounded-lg cursor-not-allowed opacity-50">
+            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
@@ -217,8 +217,8 @@ const { page } = Astro.props;
                 href={num === 1 ? '/blog' : `/blog/${num}`}
                 class={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-all duration-200 ${
                   num === page.currentPage 
-                    ? 'bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 scale-110' 
-                    : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:scale-105'
+                    ? 'bg-zinc-100 text-zinc-900 scale-110' 
+                    : 'bg-zinc-800 hover:bg-zinc-700 hover:scale-105'
                 }`}
               >
                 {num}
@@ -230,7 +230,7 @@ const { page } = Astro.props;
           {page.url.next ? (
             <a 
               href={page.url.next} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200"
+              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
             >
               Next
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
@@ -239,7 +239,7 @@ const { page } = Astro.props;
               </svg>
             </a>
           ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-600 rounded-lg cursor-not-allowed opacity-50">
+            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
               Next
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -251,8 +251,8 @@ const { page } = Astro.props;
       )}
       
       <!-- Footer Info -->
-      <div class="text-center pt-8 border-t border-zinc-200 dark:border-zinc-700">
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+      <div class="text-center pt-8 border-t border-zinc-700">
+        <p class="text-sm text-zinc-400 mb-4">
           Showing {((page.currentPage - 1) * 5) + 1}-{Math.min(page.currentPage * 5, page.total)} of {page.total} posts
         </p>
         <a href="/" class="link-accent hover:underline text-sm font-medium">
