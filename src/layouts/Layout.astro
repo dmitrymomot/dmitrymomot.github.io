@@ -11,7 +11,7 @@ const { title, description = 'Dmytro Momot - Software Engineer & Consultant' } =
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -33,7 +33,7 @@ const { title, description = 'Dmytro Momot - Software Engineer & Consultant' } =
     
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-sans antialiased">
+  <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased">
     <Navbar />
     <slot />
   </body>
