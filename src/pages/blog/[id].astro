@@ -45,15 +45,12 @@ const { Content } = await render(post);
   </section>
 
   <main class="relative">
-    <!-- Decorative line connecting hero to content -->
-    <div class="absolute left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-zinc-700 to-transparent -top-8"></div>
+    {/* Removed decorative line */}
     
     <div class="container mx-auto px-4 py-16 max-w-4xl">
 
       <!-- Article Content -->
-      <article class="prose-custom max-w-3xl mx-auto mb-16 relative">
-        <!-- Decorative accent for article -->
-        <div class="absolute -left-8 top-0 w-1 h-32 bg-gradient-to-b from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-40 hidden lg:block"></div>
+      <article class="prose-custom max-w-3xl mx-auto mb-16">
         <Content />
       </article>
 
