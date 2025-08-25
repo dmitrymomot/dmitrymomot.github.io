@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 import { getEntry } from 'astro:content';
 
 // Get home page content from markdown
@@ -464,24 +465,5 @@ const statusColorMap = {
     </div>
   </section>
 
-  <!-- SECTION 8: Footer -->
-  <footer class="bg-black py-12 border-t border-zinc-800">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <div class="text-center">
-        <div class="flex justify-center gap-6 mb-6">
-          <a href="/blog" class="text-zinc-400 hover:text-white transition-colors hover:underline">Blog</a>
-          <a href={social.linkedin} target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">LinkedIn</a>
-          <a href={social.github} target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">GitHub</a>
-          <a href={`mailto:${social.email}`} class="text-zinc-400 hover:text-white transition-colors hover:underline">Email</a>
-        </div>
-        <div>
-          <p class="text-zinc-500 text-sm">{footer.copyright}</p>
-          <div class="mt-2">
-            <a href="/privacy" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a>
-            <a href="/terms" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog', ({ data }) => {
@@ -36,20 +37,54 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
 ---
 
 <Layout title="All Tags - Dmytro Momot" description="Browse all tags from the blog">
+  <!-- Hero Section - Matching blog page design -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
+    <!-- Subtle animated background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 py-16 md:py-20 max-w-5xl relative">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">
+          Blog Topics
+        </h1>
+        <p class="text-lg md:text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
+          Explore {tagCounts.size} topics from {posts.length} articles
+        </p>
+        
+        <!-- Simple CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/blog" 
+            class="group inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Browse All Posts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main class="container mx-auto px-4 py-16 max-w-4xl">
-    <!-- Header Section -->
-    <header class="mb-16 text-center max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        All Tags
-      </h1>
-      <p class="text-lg text-zinc-400">
-        Browse {tagCounts.size} tags from {posts.length} blog posts
-      </p>
-    </header>
+
+    <!-- Section Title - Popular Tags -->
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+        Popular Topics
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
+    </div>
 
     {/* Popular Tags Section */}
     <section class="mb-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Popular Tags</h2>
       <div class="flex flex-wrap gap-4 justify-center">
         {sortedTags.slice(0, 10).map(([tag, count], index) => (
           <a 
@@ -67,10 +102,17 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
       </div>
     </section>
 
+    <!-- Section Title - All Tags -->
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+        All Topics A-Z
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
+    </div>
+
     {/* All Tags Alphabetically */}
     <section class="mb-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">All Tags A-Z</h2>
-      <div class="bg-zinc-800/30 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-700">
+      <div class="bg-zinc-800/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-700">
         <div class="space-y-8">
           {sortedLetters.map(letter => (
             <div>
@@ -98,10 +140,17 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
       </div>
     </section>
 
+    <!-- Section Title - Tag Cloud -->
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
+        Topic Cloud
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
+    </div>
+
     {/* Tag Cloud Visualization */}
     <section class="mb-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Tag Cloud</h2>
-      <div class="relative bg-gradient-to-br from-zinc-800/30 to-zinc-900/30 rounded-2xl p-12 border border-zinc-700 overflow-hidden">
+      <div class="relative bg-zinc-800/50 rounded-2xl p-12 border border-zinc-700 overflow-hidden">
         <div class="flex flex-wrap gap-3 justify-center items-center">
           {sortedTags.map(([tag, count]) => {
             // Calculate font size based on count (min 0.875rem, max 2.5rem)
@@ -134,18 +183,14 @@ const sortedLetters = Array.from(tagsByLetter.keys()).sort();
       </div>
     </section>
 
-    {/* Navigation */}
-    <nav class="flex justify-center">
-      <a 
-        href="/blog" 
-        class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        Back to all posts
-      </a>
+    {/* Footer Navigation */}
+    <nav class="pt-8">
+      <div class="text-center">
+        <p class="text-sm text-zinc-400 mb-4">
+          Browsing {tagCounts.size} topics from {posts.length} articles
+        </p>
+      </div>
     </nav>
   </main>
+  <Footer />
 </Layout>
