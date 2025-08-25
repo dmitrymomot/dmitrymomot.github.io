@@ -72,18 +72,17 @@ const statusColorMap = {
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href={`mailto:${contact.email}?subject=Consultation Request`}
-            class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] text-zinc-900 rounded-lg hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-105 transition-all duration-200 font-semibold text-lg"
+            class="group inline-flex items-center gap-2 px-8 py-4 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold text-lg"
           >
-            Schedule a Consultation
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
+            Schedule a Consultation
           </a>
           <a 
             href={social.linkedin}
             target="_blank"
-            class="group inline-flex items-center gap-2 px-8 py-4 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 font-semibold text-lg"
+            class="group inline-flex items-center gap-2 px-8 py-4 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold text-lg"
           >
             View LinkedIn Profile
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -445,20 +444,16 @@ const statusColorMap = {
       <div class="grid md:grid-cols-2 gap-6">
         <a 
           href={contact.calendlyLink !== '#' ? contact.calendlyLink : `mailto:${contact.email}?subject=Consultation Request`}
-          class="group flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] text-zinc-900 rounded-lg hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-105 transition-all duration-200 font-semibold text-lg"
+          class="group flex items-center justify-center gap-2 px-8 py-4 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold text-lg"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>
           Schedule a 30-minute Call
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
         </a>
         <a 
           href={`mailto:${contact.email}`}
-          class="group flex items-center justify-center gap-2 px-8 py-4 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 font-semibold text-lg"
+          class="group flex items-center justify-center gap-2 px-8 py-4 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold text-lg"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
