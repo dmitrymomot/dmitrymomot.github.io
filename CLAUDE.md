@@ -4,84 +4,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-This is Dmytro Momot's personal website built with Astro v5.13.3, showcasing professional experience and consulting services. The site transitioned from a custom Go-based static site generator to Astro for better flexibility and markdown blog support.
+Dmytro Momot's personal website and consulting portfolio built with Astro, featuring a blog and service offerings. The site outputs to `docs/` for GitHub Pages deployment.
 
 ## Tech Stack
 
-- **Framework**: Astro v5.13.3 with TypeScript (strict mode)
-- **Styling**: Tailwind CSS v4 (via @tailwindcss/vite)
-- **Content Management**: Astro Content Collections for blog posts
-- **Deployment**: GitHub Pages (master branch)
-- **Domain**: dmomot.com (configured via CNAME in public/)
+- **Framework**: Astro v5.13.3 with TypeScript strict mode
+- **Styling**: Tailwind CSS v4 via @tailwindcss/vite
+- **Content**: Astro Content Collections (blog posts and pages)
+- **Deployment**: GitHub Pages from master branch `docs/` folder
+- **Domain**: dmomot.com
 
 ## Development Commands
 
 ```bash
-# Start development server on http://localhost:4321
+# Development server (http://localhost:4321)
 npm run dev
+# or
+make dev
 
-# Build for production (outputs to dist/)
+# Build to docs/ directory for GitHub Pages
 npm run build
+# or
+make build
 
-# Preview production build locally
+# Preview production build
 npm run preview
+# or
+make preview
 
-# Deploy to GitHub Pages
-git add . && git commit -m "Update site" && git push origin master
+# Deploy workflow
+make deploy  # Builds and shows deployment instructions
+git add docs && git commit -m "Deploy site" && git push origin master
+
+# Check build configuration
+make check
 ```
 
-## Architecture
+## Content Architecture
 
-### Content Collections
+### Content Collections (`src/content/config.ts`)
 
-Blog posts are managed through Astro's content collections system:
+Two collections with strict schemas:
 
-- **Location**: `src/content/blog/*.md`
-- **Schema**: Defined in `src/content/config.ts` with required fields:
-    - `title`: string
-    - `description`: string
-    - `publishDate`: date
-    - `tags`: string array
-    - `draft`: boolean (defaults to false)
+1. **Blog** (`src/content/blog/*.md`):
+   - Required: `title`, `description`, `publishDate`
+   - Optional: `tags[]`, `draft` (default: false)
 
-### Page Structure
+2. **Pages** (`src/content/pages/*.md`):
+   - Complex schema for homepage content including services, experience, contact info
+   - Currently used for `home.md` which drives the main landing page
 
-- **Main page** (`src/pages/index.astro`): Landing page with services and about info
-- **Blog listing** (`src/pages/blog/index.astro`): Lists all published blog posts
-- **Blog posts** (`src/pages/blog/[id].astro`): Dynamic route for individual posts
+### Page Routes
 
-### Layout System
-
-- **Base layout** (`src/layouts/Layout.astro`): Provides HTML structure, meta tags, and Tailwind styles
-- Supports dark mode via Tailwind's dark: variant classes
-- All pages import and use this layout for consistency
+- `/` - Homepage from `src/content/pages/home.md`
+- `/blog/[...page]` - Paginated blog listing
+- `/blog/[id]` - Individual blog posts
+- `/blog/tags` - All tags page
+- `/blog/tag/[tag]/[...page]` - Posts by tag
 
 ## Adding Blog Posts
 
-Create a new `.md` file in `src/content/blog/` with this frontmatter:
+Create `src/content/blog/your-post.md`:
 
 ```markdown
 ---
-title: "Post Title"
-description: "Brief description for SEO and previews"
-publishDate: 2025-08-24
-tags: ["tag1", "tag2"]
+title: "Your Post Title"  
+description: "SEO description"
+publishDate: 2025-08-26
+tags: ["consulting", "architecture"]
 draft: false
 ---
 
-Your markdown content here...
+Content with markdown support including line breaks (via remark-breaks plugin).
 ```
 
-Posts with `draft: true` won't appear in the blog listing.
+## Key Configuration
 
-## GitHub Pages Deployment
-
-The site deploys automatically when pushing to the master branch. The CNAME file in `public/` configures the custom domain.
-
-## Previous Content Backup
-
-The original Go-based site content is backed up in `backup-old-site/`:
-
-- `config.yml`: Contains all previous site content (services, projects, expertise)
-- `assets/`: Original static assets
-- This content can be migrated into the new Astro structure as needed
+- **astro.config.mjs**: Sets `outDir: './docs'` for GitHub Pages
+- **public/CNAME**: Contains domain configuration
+- **Makefile**: Provides convenient build/deploy commands
