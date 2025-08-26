@@ -10,8 +10,8 @@ export interface Props {
   type?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = 'Dmytro Momot - Software Engineer & Consultant',
   image = '/og-image.jpg',
   canonical = Astro.url.href,
@@ -55,13 +55,13 @@ const jsonLD = {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <!-- Primary Meta Tags -->
     <title>{siteTitle}</title>
     <meta name="title" content={siteTitle} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
@@ -70,35 +70,35 @@ const jsonLD = {
     <meta property="og:image" content={new URL(image, Astro.site).href} />
     <meta property="og:site_name" content="Dmytro Momot" />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={siteTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site).href} />
-    <meta property="twitter:creator" content="@dmomot" />
-    
+    <meta property="twitter:creator" content="@dmitry_momot" />
+
     <!-- Additional SEO -->
     <meta name="author" content="Dmytro Momot" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
     <meta name="language" content="English" />
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
+
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
   </head>
