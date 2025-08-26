@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OG Image Generator</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: #18181b;
+        }
+        #canvas {
+            border: 1px solid #3f3f46;
+            margin: 20px 0;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="630"></canvas>
+    <br>
+    <button onclick="downloadImage()">Download OG Image</button>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background gradient
+        const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+        gradient.addColorStop(0, '#000000');
+        gradient.addColorStop(0.5, '#18181b');
+        gradient.addColorStop(1, '#000000');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1200, 630);
+        
+        // Add subtle gradient overlay
+        const overlay = ctx.createRadialGradient(600, 315, 100, 600, 315, 500);
+        overlay.addColorStop(0, 'rgba(158, 203, 255, 0.1)');
+        overlay.addColorStop(1, 'transparent');
+        ctx.fillStyle = overlay;
+        ctx.fillRect(0, 0, 1200, 630);
+        
+        // Name
+        ctx.fillStyle = '#fafafa';
+        ctx.font = 'bold 72px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Dmytro Momot', 600, 280);
+        
+        // Title
+        ctx.fillStyle = '#9ECBFF';
+        ctx.font = '36px Inter, sans-serif';
+        ctx.fillText('Software Engineer & Consultant', 600, 340);
+        
+        // Specialization
+        ctx.fillStyle = '#a1a1aa';
+        ctx.font = '24px Inter, sans-serif';
+        ctx.fillText('Go • Cloud Architecture • B2B SaaS • Technical Leadership', 600, 400);
+        
+        // Website
+        ctx.fillStyle = '#71717a';
+        ctx.font = '20px Inter, sans-serif';
+        ctx.fillText('dmomot.com', 600, 480);
+        
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'og-image.jpg';
+            canvas.toBlob(function(blob) {
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            }, 'image/jpeg', 0.95);
+        }
+    </script>
+</body>
+</html>

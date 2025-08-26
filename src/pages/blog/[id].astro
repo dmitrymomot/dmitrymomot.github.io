@@ -13,9 +13,39 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// Enhanced SEO data for blog posts
+const articleLD = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "author": {
+    "@type": "Person",
+    "name": "Dmytro Momot",
+    "url": "https://dmomot.com"
+  },
+  "datePublished": post.data.publishDate.toISOString(),
+  "dateModified": post.data.publishDate.toISOString(),
+  "publisher": {
+    "@type": "Person",
+    "name": "Dmytro Momot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://dmomot.com/blog/${post.id}`
+  },
+  "keywords": post.data.tags.join(", ")
+};
 ---
 
-<Layout title={`${post.data.title} - Dmytro Momot`} description={post.data.description}>
+<Layout 
+  title={`${post.data.title} - Dmytro Momot`} 
+  description={post.data.description}
+  type="article"
+  image="/og-blog-image.jpg"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleLD)} />
   <!-- Hero Section - Clean and Focused -->
   <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
     <!-- Subtle animated background -->

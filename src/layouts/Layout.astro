@@ -5,9 +5,48 @@ import Navbar from '../components/Navbar.astro';
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
+  canonical?: string;
+  type?: string;
 }
 
-const { title, description = 'Dmytro Momot - Software Engineer & Consultant' } = Astro.props;
+const { 
+  title, 
+  description = 'Dmytro Momot - Software Engineer & Consultant',
+  image = '/og-image.jpg',
+  canonical = Astro.url.href,
+  type = 'website'
+} = Astro.props;
+
+const siteTitle = title.includes('Dmytro Momot') ? title : `${title} | Dmytro Momot`;
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dmytro Momot",
+  "alternateName": "Dmomot",
+  "url": "https://dmomot.com",
+  "image": "https://dmomot.com/og-image.jpg",
+  "sameAs": [
+    "https://github.com/dmitrymomot",
+    "https://linkedin.com/in/dmitrymomot",
+    "https://twitter.com/dmomot"
+  ],
+  "jobTitle": "Software Engineer & Consultant",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Self-employed"
+  },
+  "knowsAbout": [
+    "Software Development",
+    "Cloud Architecture",
+    "Go Programming",
+    "Microservices",
+    "B2B SaaS",
+    "Technical Consulting"
+  ],
+  "description": "Software Engineer & Consultant specializing in Go, cloud architecture, and B2B SaaS solutions"
+};
 ---
 
 <!doctype html>
@@ -16,6 +55,35 @@ const { title, description = 'Dmytro Momot - Software Engineer & Consultant' } =
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:site_name" content="Dmytro Momot" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site).href} />
+    <meta property="twitter:creator" content="@dmomot" />
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="Dmytro Momot" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -31,7 +99,8 @@ const { title, description = 'Dmytro Momot - Software Engineer & Consultant' } =
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <title>{title}</title>
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
   </head>
   <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased">
     <Navbar />
