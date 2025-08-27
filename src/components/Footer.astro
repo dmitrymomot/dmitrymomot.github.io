@@ -8,7 +8,8 @@ const social = {
 };
 
 const footer = {
-  copyright: `© ${currentYear} Dmytro Momot. All rights reserved.`
+  copyright: `© ${currentYear} Dmytro Momot. All rights reserved.`,
+  business: "IE Dmytro Momot • ITN: 3194620070 • Ukraine"
 };
 ---
 
@@ -23,9 +24,10 @@ const footer = {
       </div>
       <div>
         <p class="text-zinc-500 text-sm">{footer.copyright}</p>
-        <div class="mt-2">
-          <a href="/privacy" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a>
-          <a href="/terms" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a>
+        <p class="text-zinc-600 text-xs mt-2">{footer.business}</p>
+        <div class="mt-4">
+          <a href="/privacy/" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a>
+          <a href="/terms/" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a>
         </div>
       </div>
     </div>
