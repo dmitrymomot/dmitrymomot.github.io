@@ -99,14 +99,13 @@ contact:
     title: "Start a Conversation"
     intro: "Every engagement starts with understanding your specific situation."
     content: |
-        I typically respond within 24 hours and am happy to discuss:
+        Send me an email describing your technical challenges and what you're looking to achieve. I typically respond within 24 hours with my thoughts on:
         - Your current technical challenges
         - How I might be able to help
         - Whether we're a good fit for each other
 
         No project is too small for a conversation, and I'm always interested in learning about interesting technical challenges.
     email: "consulting@dmomot.com"
-    calendlyLink: "#" # Replace with actual Calendly link
 
 social:
     github: "https://github.com/dmitrymomot"
