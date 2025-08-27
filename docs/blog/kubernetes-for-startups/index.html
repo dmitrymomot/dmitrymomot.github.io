@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="description" content="A practical guide to choosing the right infrastructure for your startup based on actual constraints, not hype"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Primary Meta Tags --><title>Kubernetes for Startups: Probably Not Yet - Dmytro Momot</title><meta name="title" content="Kubernetes for Startups: Probably Not Yet - Dmytro Momot"><meta name="description" content="A practical guide to choosing the right infrastructure for your startup based on actual constraints, not hype"><link rel="canonical" href="https://dmomot.com/blog/kubernetes-for-startups/"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://dmomot.com/blog/kubernetes-for-startups/"><meta property="og:title" content="Kubernetes for Startups: Probably Not Yet - Dmytro Momot"><meta property="og:description" content="A practical guide to choosing the right infrastructure for your startup based on actual constraints, not hype"><meta property="og:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="og:site_name" content="Dmytro Momot"><meta property="og:locale" content="en_US"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://dmomot.com/blog/kubernetes-for-startups/"><meta property="twitter:title" content="Kubernetes for Startups: Probably Not Yet - Dmytro Momot"><meta property="twitter:description" content="A practical guide to choosing the right infrastructure for your startup based on actual constraints, not hype"><meta property="twitter:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="twitter:creator" content="@dmitry_momot"><!-- Additional SEO --><meta name="author" content="Dmytro Momot"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="language" content="English"><!-- Favicons --><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="generator" content="Astro v5.13.3"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><!-- Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dmytro Momot","alternateName":"Dmomot","url":"https://dmomot.com","image":"https://dmomot.com/og-image.jpg","sameAs":["https://github.com/dmitrymomot","https://linkedin.com/in/dmitrymomot","https://twitter.com/dmomot"],"jobTitle":"Software Engineer & Consultant","worksFor":{"@type":"Organization","name":"Self-employed"},"knowsAbout":["Software Development","Cloud Architecture","Go Programming","Microservices","B2B SaaS","Technical Consulting"],"description":"Software Engineer & Consultant specializing in Go, cloud architecture, and B2B SaaS solutions"}</script><link rel="stylesheet" href="/_astro/_page_.DAOOmOzD.css"></head> <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased"> <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/90 backdrop-blur-sm border-b border-zinc-800"> <nav class="container mx-auto px-4 max-w-5xl"> <div class="flex items-center justify-between h-16"> <!-- Logo/Brand --> <a href="/" class="font-bold tracking-tight group flex items-baseline"> <span class="text-lg text-zinc-400 group-hover:text-zinc-200 transition-colors">DM</span> <span class="text-3xl text-[#79B8FF] group-hover:text-[#9ECBFF] transition-colors leading-none">.</span> </a> <!-- Navigation Links --> <div class="flex items-center gap-6"> <!-- Main Nav --> <div class="hidden md:flex items-center gap-6"> <a href="/" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> <!-- Social Links --> <div class="flex items-center gap-4"> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <a href="https://linkedin.com/in/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path> </svg> </a> <a href="mailto:consulting@dmomot.com" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="Email"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </a> </div> <!-- Mobile menu button --> <button class="md:hidden text-zinc-400 hover:text-zinc-100" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800"> <div class="py-4 space-y-2"> <a href="/" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> </div> </nav> </header> <!-- Spacer to prevent content from going under fixed navbar --> <div class="h-16"></div>    <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black"> <!-- Subtle animated background --> <div class="absolute inset-0 overflow-hidden pointer-events-none"> <div class="absolute -top-40 -right-40 w-72 h-72 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div> <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div> </div> <div class="container mx-auto px-4 py-16 md:py-20 max-w-4xl relative"> <header class="text-center max-w-3xl mx-auto"> <!-- Simple Date --> <div class="text-sm text-zinc-500 mb-6"> October 30, 2024 </div> <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight"> Kubernetes for Startups: Probably Not Yet </h1> <p class="text-lg text-zinc-400 leading-relaxed"> A practical guide to choosing the right infrastructure for your startup based on actual constraints, not hype </p> </header> </div> </section> <main class="relative">  <div class="container mx-auto px-4 py-16 max-w-4xl"> <!-- Article Content --> <article class="prose-custom max-w-3xl mx-auto mb-16"> <p>Your startup doesn’t need Kubernetes.</p>
+<p>There. I said it.</p>
+<p>I keep seeing the same pattern. Small teams, early-stage startups, sometimes just 3-5 engineers. They’re choosing Kubernetes because it’s “production-ready”. Because it’s what “serious companies” use.</p>
+<p>They’re solving the wrong problem.</p>
+<p>Here’s how to choose infrastructure based on what you actually need.</p>
+<h2 id="the-real-question">The Real Question</h2>
+<p>Before comparing platforms, answer this: What’s your biggest constraint?</p>
+<p>Time? Money? Expertise?</p>
+<p>Your constraint determines your choice. Not what Google uses. Not what’s on job postings.</p>
+<h2 id="push-to-deploy-platforms">Push-to-Deploy Platforms</h2>
+<p><strong>What they are:</strong> You push code, it runs. No servers. No containers. No YAML files.</p>
+<p><strong>Examples:</strong> DigitalOcean App Platform, Render, Railway, Fly.io, Heroku</p>
+<p><strong>Choose this when:</strong></p>
+<ul>
+<li>You don’t have a DevOps person</li>
+<li>You need to ship features, not manage infrastructure</li>
+<li>Your constraint is time, not money</li>
+<li>You have less than 10 services (if you have more, maybe you need to read <a href="/blog/microservices-when-they-help-hurt">this post about microservices</a>)</li>
+</ul>
+<p><strong>The trade-offs:</strong></p>
+<ul>
+<li>Costs more per compute unit (~2-3x VPS prices)</li>
+<li>Limited customization options</li>
+<li>Platform-specific configurations (but your code stays portable)</li>
+</ul>
+<p><strong>Real numbers:</strong> $50-200/month handles most early-stage startups</p>
+<p><strong>My take:</strong> This is where 90% of startups should be. DigitalOcean App Platform has the clearest pricing. Render has great developer experience.</p>
+<h2 id="self-hosted-application-platforms">Self-Hosted Application Platforms</h2>
+<p><strong>What they are:</strong> Push-to-deploy experience on your own servers. Like Heroku, but you control the infrastructure.</p>
+<p><strong>Examples:</strong> Dokku, Dokploy, Coolify, Piku</p>
+<p><strong>Choose this when:</strong></p>
+<ul>
+<li>Your constraint is money, not time</li>
+<li>You’re comfortable with basic Linux administration</li>
+<li>You need specific configurations (special networking, GPU access)</li>
+<li>You’re bootstrapped and need to minimize costs</li>
+</ul>
+<p><strong>The trade-offs:</strong></p>
+<ul>
+<li>You manage the server (updates, backups, security)</li>
+<li>Initial setup takes 2-4 hours</li>
+<li>When it breaks at 2am, it’s on you</li>
+</ul>
+<p><strong>Real numbers:</strong> $20-60/month on a DigitalOcean Droplet</p>
+<p><strong>My take:</strong> Great for bootstrapped startups. Dokku is battle-tested. Dokploy has a nice UI. But remember: you’re now responsible for uptime.</p>
+<h2 id="container-orchestration-platforms">Container Orchestration Platforms</h2>
+<p><strong>What they are:</strong> Managed Kubernetes. Containers, pods, services, deployments. The full complexity.</p>
+<p><strong>Examples:</strong> Google GKE, AWS EKS, Azure AKS, DigitalOcean Kubernetes</p>
+<p><strong>Choose this when:</strong></p>
+<ul>
+<li>You have actual multi-tenancy requirements (isolated customer environments)</li>
+<li>You run 20+ services that need complex orchestration</li>
+<li>You have dedicated DevOps/Platform engineers</li>
+<li>You need specific features: service mesh, advanced networking, custom schedulers</li>
+</ul>
+<p><strong>The trade-offs:</strong></p>
+<ul>
+<li>Steep learning curve (expect 3-6 months to get comfortable)</li>
+<li>Requires dedicated expertise</li>
+<li>Debugging becomes significantly harder</li>
+<li>Minimum viable cluster costs more</li>
+</ul>
+<p><strong>Real numbers:</strong> $300-1000/month minimum (control plane + nodes)</p>
+<p><strong>My take:</strong> GKE is the best K8s experience. EKS if you’re already on AWS. But ask yourself: do you really need this? Or are you choosing complexity as a form of procrastination?</p>
+<h2 id="the-decision-framework">The Decision Framework</h2>
+<p>Stop thinking about stages. Think about constraints.</p>
+<p><strong>If your constraint is time:</strong><br>
+→ Push-to-deploy platform. Ship features, not YAML.</p>
+<p><strong>If your constraint is money:</strong><br>
+→ Self-hosted platform. Trade time for lower costs.</p>
+<p><strong>If your constraint is specific technical requirements:</strong><br>
+→ Managed Kubernetes. But list those requirements. Be specific.</p>
+<p><strong>If your constraint is “we might need to scale”:</strong><br>
+→ You’re solving the wrong problem. Use push-to-deploy.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p><strong>The “Future Scale” Mistake</strong></p>
+<p>“We’ll need Kubernetes when we scale.”</p>
+<p>Netflix ran on AWS EC2 for years. Basecamp still uses monolithic Rails. Stack Overflow runs on a handful of servers.</p>
+<p>You’ll need Kubernetes when you need it. Not before.</p>
+<p><strong>The “Industry Standard” Mistake</strong></p>
+<p>“Everyone uses Kubernetes.”</p>
+<p>Everyone talks about using Kubernetes. Most are running simple applications that would work fine on a $20 VPS.</p>
+<p><strong>The “Recruiting” Mistake</strong></p>
+<p>“Engineers want to work with Kubernetes.”</p>
+<p>Good engineers want to ship products. They want impact. If someone won’t join because you use boring infrastructure, you dodged a bullet.</p>
+<h2 id="real-examples">Real Examples</h2>
+<p><strong>E-commerce startup:</strong></p>
+<ul>
+<li>5 engineers, B2C</li>
+<li>Push-to-deploy platform</li>
+<li>~$150/month</li>
+<li>Handles thousands of daily users</li>
+</ul>
+<p><strong>B2B SaaS:</strong></p>
+<ul>
+<li>15 engineers</li>
+<li>Started with push-to-deploy</li>
+<li>Moved to managed K8s after 2 years</li>
+<li>Real multi-tenancy requirements drove the change</li>
+</ul>
+<p><strong>Analytics platform:</strong></p>
+<ul>
+<li>8 engineers</li>
+<li>Jumped straight to Kubernetes</li>
+<li>~$1000/month infrastructure</li>
+<li>Realized too late that push-to-deploy + job queues would have worked</li>
+</ul>
+<h2 id="the-reality-check">The Reality Check</h2>
+<p>Based on public information, successful companies kept infrastructure simple for years:</p>
+<p><strong>Airbnb</strong>: Ran on AWS EC2 for 10 years. No Kubernetes. Just servers running their app.</p>
+<p><strong>GitHub</strong>: They still deploy 20 times a day without container orchestration. Simple infrastructure, great engineering.</p>
+<p><strong>Shopify</strong>: Black Friday traffic (30TB/minute) runs without Kubernetes. They just scale horizontally on basic cloud services.</p>
+<p><strong>Stripe</strong>: Built their entire payment platform on standard AWS services. Started in 2011, and the approach hasn’t changed much.</p>
+<p><strong>Stack Overflow</strong>: One of the world’s busiest sites on a handful of servers. They’re not even using cloud.</p>
+<p>They focused on product-market fit. Not infrastructure complexity.</p>
+<h2 id="my-recommendation">My Recommendation</h2>
+<p>Default to push-to-deploy platforms. DigitalOcean App Platform if you want predictable pricing. Render if you want great developer experience.</p>
+<p>Only move to self-hosted if you’re truly cost-constrained and have time.</p>
+<p>Only move to Kubernetes if you have specific technical requirements that simpler platforms can’t meet. Write those requirements down. Be specific.</p>
+<p>Your infrastructure should be boring. Boring is reliable. Boring is debuggable. Boring lets you focus on what matters.</p>
+<p>Your customers don’t care if you use Kubernetes.</p>
+<p>They care if your product works.</p>
+<p>Wrestling with infrastructure decisions? I help startups choose the right level of complexity for their actual needs.</p> </article> <!-- Tags Section with enhanced design --> <div class="max-w-3xl mx-auto mb-16"> <div class="relative bg-zinc-800/30 rounded-2xl p-8 border border-zinc-700"> <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Topics Covered</h3> <div class="flex gap-2 flex-wrap"> <a href="/blog/tag/kubernetes" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">kubernetes</span> </a><a href="/blog/tag/devops" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">devops</span> </a><a href="/blog/tag/startups" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">startups</span> </a><a href="/blog/tag/architecture" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">architecture</span> </a><a href="/blog/tag/cloud" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">cloud</span> </a> </div> </div> </div> <!-- Enhanced Navigation --> <nav class="max-w-3xl mx-auto"> <div class="flex flex-col sm:flex-row gap-4 justify-center"> <a href="/blog" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"> <line x1="19" y1="12" x2="5" y2="12"></line> <polyline points="12 19 5 12 12 5"></polyline> </svg>
+Back to Blog
+</a> <a href="/" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold">
+View Services
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"> <line x1="5" y1="12" x2="19" y2="12"></line> <polyline points="12 5 19 12 12 19"></polyline> </svg> </a> </div> </nav> </div> </main> <footer class="bg-black py-12"> <div class="container mx-auto px-4 max-w-5xl"> <div class="text-center"> <div class="flex justify-center gap-6 mb-6"> <a href="/blog" class="text-zinc-400 hover:text-white transition-colors hover:underline">Blog</a> <a href="https://www.linkedin.com/in/dmytro-momot/" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">LinkedIn</a> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">GitHub</a> <a href="mailto:contact@dmomot.com" class="text-zinc-400 hover:text-white transition-colors hover:underline">Email</a> </div> <div> <p class="text-zinc-500 text-sm">© 2025 Dmytro Momot. All rights reserved.</p> <div class="mt-2"> <a href="/privacy" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a> <a href="/terms" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a> </div> </div> </div> </div> </footer>  </body></html>

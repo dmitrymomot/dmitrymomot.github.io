@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="description" content="Everyone wants microservices until they have them. Here's my practical guide on when they actually make sense and when they'll destroy your productivity."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Primary Meta Tags --><title>Microservices: When They Help and When They Hurt - Dmytro Momot</title><meta name="title" content="Microservices: When They Help and When They Hurt - Dmytro Momot"><meta name="description" content="Everyone wants microservices until they have them. Here's my practical guide on when they actually make sense and when they'll destroy your productivity."><link rel="canonical" href="https://dmomot.com/blog/microservices-when-they-help-hurt/"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://dmomot.com/blog/microservices-when-they-help-hurt/"><meta property="og:title" content="Microservices: When They Help and When They Hurt - Dmytro Momot"><meta property="og:description" content="Everyone wants microservices until they have them. Here's my practical guide on when they actually make sense and when they'll destroy your productivity."><meta property="og:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="og:site_name" content="Dmytro Momot"><meta property="og:locale" content="en_US"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://dmomot.com/blog/microservices-when-they-help-hurt/"><meta property="twitter:title" content="Microservices: When They Help and When They Hurt - Dmytro Momot"><meta property="twitter:description" content="Everyone wants microservices until they have them. Here's my practical guide on when they actually make sense and when they'll destroy your productivity."><meta property="twitter:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="twitter:creator" content="@dmitry_momot"><!-- Additional SEO --><meta name="author" content="Dmytro Momot"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="language" content="English"><!-- Favicons --><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="generator" content="Astro v5.13.3"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><!-- Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dmytro Momot","alternateName":"Dmomot","url":"https://dmomot.com","image":"https://dmomot.com/og-image.jpg","sameAs":["https://github.com/dmitrymomot","https://linkedin.com/in/dmitrymomot","https://twitter.com/dmomot"],"jobTitle":"Software Engineer & Consultant","worksFor":{"@type":"Organization","name":"Self-employed"},"knowsAbout":["Software Development","Cloud Architecture","Go Programming","Microservices","B2B SaaS","Technical Consulting"],"description":"Software Engineer & Consultant specializing in Go, cloud architecture, and B2B SaaS solutions"}</script><link rel="stylesheet" href="/_astro/_page_.DAOOmOzD.css"></head> <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased"> <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/90 backdrop-blur-sm border-b border-zinc-800"> <nav class="container mx-auto px-4 max-w-5xl"> <div class="flex items-center justify-between h-16"> <!-- Logo/Brand --> <a href="/" class="font-bold tracking-tight group flex items-baseline"> <span class="text-lg text-zinc-400 group-hover:text-zinc-200 transition-colors">DM</span> <span class="text-3xl text-[#79B8FF] group-hover:text-[#9ECBFF] transition-colors leading-none">.</span> </a> <!-- Navigation Links --> <div class="flex items-center gap-6"> <!-- Main Nav --> <div class="hidden md:flex items-center gap-6"> <a href="/" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> <!-- Social Links --> <div class="flex items-center gap-4"> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <a href="https://linkedin.com/in/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path> </svg> </a> <a href="mailto:consulting@dmomot.com" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="Email"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </a> </div> <!-- Mobile menu button --> <button class="md:hidden text-zinc-400 hover:text-zinc-100" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800"> <div class="py-4 space-y-2"> <a href="/" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> </div> </nav> </header> <!-- Spacer to prevent content from going under fixed navbar --> <div class="h-16"></div>    <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black"> <!-- Subtle animated background --> <div class="absolute inset-0 overflow-hidden pointer-events-none"> <div class="absolute -top-40 -right-40 w-72 h-72 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div> <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div> </div> <div class="container mx-auto px-4 py-16 md:py-20 max-w-4xl relative"> <header class="text-center max-w-3xl mx-auto"> <!-- Simple Date --> <div class="text-sm text-zinc-500 mb-6"> May 3, 2023 </div> <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight"> Microservices: When They Help and When They Hurt </h1> <p class="text-lg text-zinc-400 leading-relaxed"> Everyone wants microservices until they have them. Here&#39;s my practical guide on when they actually make sense and when they&#39;ll destroy your productivity. </p> </header> </div> </section> <main class="relative">  <div class="container mx-auto px-4 py-16 max-w-4xl"> <!-- Article Content --> <article class="prose-custom max-w-3xl mx-auto mb-16"> <p>Everyone wants microservices. Until they actually have them.</p>
+<p>I’ve seen too many teams jump into microservices because Netflix does it. News flash: you’re not Netflix. You don’t have their problems. Or their resources.</p>
+<p>Let me save you months of pain with simple rules about when microservices help and when they hurt.</p>
+<h2 id="when-microservices-actually-help">When Microservices Actually Help</h2>
+<h3 id="different-scaling-needs">Different Scaling Needs</h3>
+<p>Your auth service handles 100 req/sec. Your reporting service handles 10,000 req/sec.</p>
+<p>Makes sense to scale them independently? Only if it’s cheaper than scaling the whole monolith. Sometimes 3 bigger instances cost less than managing 2 separate services with their own infrastructure. Do the math first.</p>
+<h3 id="different-teams-different-tech">Different Teams, Different Tech</h3>
+<p>Team A knows Python. Team B knows Go. Team C inherited a Java monster.</p>
+<p>Microservices let each team use their strengths. But only if you actually have separate teams.</p>
+<h3 id="isolation-requirements">Isolation Requirements</h3>
+<p>Payment processing needs PCI compliance. User profiles don’t.</p>
+<p>Isolate the compliance burden. Don’t spread it across your entire system.</p>
+<h3 id="independent-deployment-cycles">Independent Deployment Cycles</h3>
+<p>Your experimentation platform changes daily. Your billing system changes quarterly.</p>
+<p>Different change velocities? Different services make sense.</p>
+<h2 id="when-microservices-will-hurt-you">When Microservices Will Hurt You</h2>
+<h3 id="you-have-fewer-than-20-developers">You Have Fewer Than 20 Developers</h3>
+<p>Ten developers managing 30 services? That’s not architecture. That’s masochism.</p>
+<p>One service per two developers. Maximum. Otherwise you’re a full-time DevOps team that occasionally writes features.</p>
+<h3 id="you-dont-have-proper-devops">You Don’t Have Proper DevOps</h3>
+<p>No CI/CD pipeline? No container orchestration? No service mesh? No monitoring?</p>
+<p>Stay monolithic. Seriously.</p>
+<p>Microservices without proper tooling is like flying without instruments. You’ll crash. Just a matter of when.</p>
+<h3 id="your-domain-boundaries-arent-clear">Your Domain Boundaries Aren’t Clear</h3>
+<p>Can’t clearly define what each service does? You’ll end up with distributed spaghetti.</p>
+<p>Worse than regular spaghetti. At least monolithic spaghetti is in one place.</p>
+<h3 id="youre-early-stage">You’re Early Stage</h3>
+<p>Still finding product-market fit? Your architecture will change every month.</p>
+<p>Refactoring a monolith: annoying.<br>
+Refactoring 15 microservices: impossible.</p>
+<h2 id="the-real-costs-nobody-mentions">The Real Costs Nobody Mentions</h2>
+<p><strong>Distributed Systems Complexity</strong></p>
+<ul>
+<li>Network failures everywhere</li>
+<li>Eventual consistency headaches</li>
+<li>You’ll need distributed transactions</li>
+<li>Service discovery becomes critical</li>
+<li>Don’t forget circuit breakers</li>
+</ul>
+<p>Each adds complexity. Together? Exponential complexity.</p>
+<p><strong>Operational Overhead</strong></p>
+<ul>
+<li>20 services = 20 deployments</li>
+<li>20 sets of logs</li>
+<li>20 things to monitor</li>
+<li>20 things that can break at 3 AM</li>
+</ul>
+<p><strong>Data Management Hell</strong></p>
+<ul>
+<li>Joins across services become impossible</li>
+<li>Data consistency? That’s your new nightmare</li>
+<li>ACID transactions are gone</li>
+</ul>
+<p><strong>Testing Complexity</strong></p>
+<ul>
+<li>Unit tests? Easy</li>
+<li>Integration tests? Hard</li>
+<li>End-to-end tests? Basically impossible</li>
+</ul>
+<h2 id="my-practical-rules">My Practical Rules</h2>
+<h3 id="start-with-a-modular-monolith">Start with a Modular Monolith</h3>
+<p>Build like it’s microservices. Deploy like it’s a monolith.</p>
+<p>Clear module boundaries. Separate databases per module if possible. But one deployment.</p>
+<p>This gives you 80% of microservices benefits with 20% of the pain.</p>
+<h3 id="extract-services-when-pain-becomes-clear">Extract Services When Pain Becomes Clear</h3>
+<p>That module that always causes problems? Extract it.</p>
+<p>That team that needs to deploy hourly? Give them their own service.</p>
+<p>That component eating all your CPU? Separate it.</p>
+<p>Extract based on actual pain, not anticipated pain.</p>
+<h3 id="architecture-should-mirror-team-structure">Architecture Should Mirror Team Structure</h3>
+<p>This is Conway’s Law. And it’s real.</p>
+<p>Multiple teams working on different bounded contexts? That’s when microservices make sense. Each team owns their domain, their service, their deployment schedule.</p>
+<p>One team working across multiple areas? Keep the monolith. Splitting the code when you can’t split the team just creates coordination overhead.</p>
+<p>5-8 developers per service is sustainable. 2-3 developers? They’ll spend more time on DevOps than features.</p>
+<h3 id="consider-the-middle-ground">Consider the Middle Ground</h3>
+<p>Not everything is monolith vs microservices.</p>
+<p><strong>Service-Oriented Architecture (SOA)</strong>: 5-10 larger services instead of 50 tiny ones.</p>
+<p><strong>Serverless for Edges</strong>: Keep core monolithic. Use Lambda for sporadic workloads.</p>
+<p><strong>Modular Monolith</strong>: Strict boundaries, shared deployment.</p>
+<h2 id="questions-to-ask-before-going-micro">Questions to Ask Before Going Micro</h2>
+<ol>
+<li>Can you draw clear boundaries between services?</li>
+<li>Do you have different scaling requirements?</li>
+<li>Can you handle 10x operational complexity?</li>
+<li>Do you have dedicated DevOps resources?</li>
+<li>Are you solving actual problems or imaginary ones?</li>
+</ol>
+<p>Less than 4 “yes” answers? Stay monolithic.</p>
+<h2 id="real-world-examples">Real-World Examples</h2>
+<p>Based on publicly available information, here’s what actually happened at scale:</p>
+<h3 id="airbnbs-10-year-journey">Airbnb’s 10-Year Journey</h3>
+<p>Started in 2008 with a Rails monolith called “Monorail”. One codebase. One deployment. Simple.</p>
+<p>This worked for 10 years. Through massive growth. Through international expansion. Through IPO preparation.</p>
+<p>Only in 2018, with 1000+ engineers, did they move to SOA (not even microservices). Why? Deployment times reached hours. Code changes were delayed 15 hours/week due to rollbacks. They had actual pain.</p>
+<p>The migration took years. They’re still not fully microservices. They call it “service-oriented architecture” - larger services, not micro ones.</p>
+<h3 id="githubs-monolith-success">GitHub’s Monolith Success</h3>
+<p>Still runs a Rails monolith today. 2 million lines of code. 1000+ engineers. 500,000 commits.</p>
+<p>They deploy 20 times per day. From a monolith. They upgrade Rails weekly. They adopted Ruby 3.2.1 on release day.</p>
+<p>How? Modular architecture within the monolith. Clear boundaries. Great tooling. Proof that monoliths can scale.</p>
+<h3 id="shopifys-modular-monolith">Shopify’s Modular Monolith</h3>
+<p>Rails application with 2.8 million lines of code. Handles 30TB of traffic per minute on Black Friday.</p>
+<p>Their approach? Modular monolith. They’ve been working on modularization for 2.5 years. Still not finished. Still one deployment.</p>
+<p>They use “pods architecture” to shard databases by shop_id. But the application? Still monolithic. Because it works.</p>
+<h3 id="stripes-pragmatic-evolution">Stripe’s Pragmatic Evolution</h3>
+<p>Started with Ruby on AWS EC2 in 2011. Today: 15 million lines of Ruby across 150,000 files.</p>
+<p>Did they go microservices? Partially. They rewrote PCI-sensitive components in Go for performance (150µs vs 500µs latency). Everything else? Still Ruby. Still relatively monolithic.</p>
+<p>Why? Because most of their system doesn’t need microsecond latency. Only extract what needs different characteristics.</p>
+<h3 id="the-pattern">The Pattern</h3>
+<p>All these companies:</p>
+<ul>
+<li>Started with monoliths</li>
+<li>Grew to billions in revenue with monoliths</li>
+<li>Only changed architecture when forced by real constraints</li>
+<li>Moved to SOA or modular monoliths, not true microservices</li>
+<li>Took years to migrate when they did</li>
+</ul>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<p>Microservices solve real problems. But they create real problems too.</p>
+<p>Most teams need a monolith. A well-structured, modular monolith. Not microservices.</p>
+<p>Start simple. Extract when you feel real pain. Not before.</p>
+<p>Because here’s the truth: it’s easier to break apart a monolith than to merge microservices. I’ve done both. Trust me on this one.</p>
+<p>Remember: boring technology choices let you focus on interesting business problems. Microservices are rarely the boring choice.</p>
+<p>Need help deciding between monolith and microservices? Let’s look at your actual constraints, not theoretical benefits.</p> </article> <!-- Tags Section with enhanced design --> <div class="max-w-3xl mx-auto mb-16"> <div class="relative bg-zinc-800/30 rounded-2xl p-8 border border-zinc-700"> <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Topics Covered</h3> <div class="flex gap-2 flex-wrap"> <a href="/blog/tag/architecture" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">architecture</span> </a><a href="/blog/tag/microservices" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">microservices</span> </a><a href="/blog/tag/strategy" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">strategy</span> </a><a href="/blog/tag/scaling" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">scaling</span> </a> </div> </div> </div> <!-- Enhanced Navigation --> <nav class="max-w-3xl mx-auto"> <div class="flex flex-col sm:flex-row gap-4 justify-center"> <a href="/blog" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"> <line x1="19" y1="12" x2="5" y2="12"></line> <polyline points="12 19 5 12 12 5"></polyline> </svg>
+Back to Blog
+</a> <a href="/" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold">
+View Services
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"> <line x1="5" y1="12" x2="19" y2="12"></line> <polyline points="12 5 19 12 12 19"></polyline> </svg> </a> </div> </nav> </div> </main> <footer class="bg-black py-12"> <div class="container mx-auto px-4 max-w-5xl"> <div class="text-center"> <div class="flex justify-center gap-6 mb-6"> <a href="/blog" class="text-zinc-400 hover:text-white transition-colors hover:underline">Blog</a> <a href="https://www.linkedin.com/in/dmytro-momot/" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">LinkedIn</a> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">GitHub</a> <a href="mailto:contact@dmomot.com" class="text-zinc-400 hover:text-white transition-colors hover:underline">Email</a> </div> <div> <p class="text-zinc-500 text-sm">© 2025 Dmytro Momot. All rights reserved.</p> <div class="mt-2"> <a href="/privacy" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a> <a href="/terms" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a> </div> </div> </div> </div> </footer>  </body></html>

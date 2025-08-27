@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="description" content="Everyone loves DDD until they're drowning in repositories, value objects, and aggregate roots. Here's why tactical DDD often becomes expensive over-engineering."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Primary Meta Tags --><title>DDD: When Domain-Driven Design Becomes Your Personal Hell - Dmytro Momot</title><meta name="title" content="DDD: When Domain-Driven Design Becomes Your Personal Hell - Dmytro Momot"><meta name="description" content="Everyone loves DDD until they're drowning in repositories, value objects, and aggregate roots. Here's why tactical DDD often becomes expensive over-engineering."><link rel="canonical" href="https://dmomot.com/blog/ddd-personal-hell/"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://dmomot.com/blog/ddd-personal-hell/"><meta property="og:title" content="DDD: When Domain-Driven Design Becomes Your Personal Hell - Dmytro Momot"><meta property="og:description" content="Everyone loves DDD until they're drowning in repositories, value objects, and aggregate roots. Here's why tactical DDD often becomes expensive over-engineering."><meta property="og:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="og:site_name" content="Dmytro Momot"><meta property="og:locale" content="en_US"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://dmomot.com/blog/ddd-personal-hell/"><meta property="twitter:title" content="DDD: When Domain-Driven Design Becomes Your Personal Hell - Dmytro Momot"><meta property="twitter:description" content="Everyone loves DDD until they're drowning in repositories, value objects, and aggregate roots. Here's why tactical DDD often becomes expensive over-engineering."><meta property="twitter:image" content="https://dmomot.com/og-blog-image.jpg"><meta property="twitter:creator" content="@dmitry_momot"><!-- Additional SEO --><meta name="author" content="Dmytro Momot"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="language" content="English"><!-- Favicons --><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="generator" content="Astro v5.13.3"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><!-- Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dmytro Momot","alternateName":"Dmomot","url":"https://dmomot.com","image":"https://dmomot.com/og-image.jpg","sameAs":["https://github.com/dmitrymomot","https://linkedin.com/in/dmitrymomot","https://twitter.com/dmomot"],"jobTitle":"Software Engineer & Consultant","worksFor":{"@type":"Organization","name":"Self-employed"},"knowsAbout":["Software Development","Cloud Architecture","Go Programming","Microservices","B2B SaaS","Technical Consulting"],"description":"Software Engineer & Consultant specializing in Go, cloud architecture, and B2B SaaS solutions"}</script><link rel="stylesheet" href="/_astro/_page_.DAOOmOzD.css"></head> <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased"> <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/90 backdrop-blur-sm border-b border-zinc-800"> <nav class="container mx-auto px-4 max-w-5xl"> <div class="flex items-center justify-between h-16"> <!-- Logo/Brand --> <a href="/" class="font-bold tracking-tight group flex items-baseline"> <span class="text-lg text-zinc-400 group-hover:text-zinc-200 transition-colors">DM</span> <span class="text-3xl text-[#79B8FF] group-hover:text-[#9ECBFF] transition-colors leading-none">.</span> </a> <!-- Navigation Links --> <div class="flex items-center gap-6"> <!-- Main Nav --> <div class="hidden md:flex items-center gap-6"> <a href="/" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> <!-- Social Links --> <div class="flex items-center gap-4"> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <a href="https://linkedin.com/in/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path> </svg> </a> <a href="mailto:consulting@dmomot.com" class="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="Email"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </a> </div> <!-- Mobile menu button --> <button class="md:hidden text-zinc-400 hover:text-zinc-100" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800"> <div class="py-4 space-y-2"> <a href="/" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Home
+</a> <a href="/blog" class="block px-4 py-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+Blog
+</a> </div> </div> </nav> </header> <!-- Spacer to prevent content from going under fixed navbar --> <div class="h-16"></div>    <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black"> <!-- Subtle animated background --> <div class="absolute inset-0 overflow-hidden pointer-events-none"> <div class="absolute -top-40 -right-40 w-72 h-72 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div> <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div> </div> <div class="container mx-auto px-4 py-16 md:py-20 max-w-4xl relative"> <header class="text-center max-w-3xl mx-auto"> <!-- Simple Date --> <div class="text-sm text-zinc-500 mb-6"> July 11, 2023 </div> <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight"> DDD: When Domain-Driven Design Becomes Your Personal Hell </h1> <p class="text-lg text-zinc-400 leading-relaxed"> Everyone loves DDD until they&#39;re drowning in repositories, value objects, and aggregate roots. Here&#39;s why tactical DDD often becomes expensive over-engineering. </p> </header> </div> </section> <main class="relative">  <div class="container mx-auto px-4 py-16 max-w-4xl"> <!-- Article Content --> <article class="prose-custom max-w-3xl mx-auto mb-16"> <p>Domain-Driven Design sounds perfect. Until you implement it.</p>
+<p>Then you’re six months in, drowning in abstractions, and your simple CRUD app has more layers than an onion. Your team hates you. You hate yourself.</p>
+<p>Let me tell you why DDD can become your personal hell. And when it’s actually worth it.</p>
+<h2 id="the-two-levels-nobody-explains-properly">The Two Levels Nobody Explains Properly</h2>
+<p>DDD has two parts. Most people mix them up.</p>
+<p><strong>Strategic DDD</strong>: The good stuff. Bounded contexts. Ubiquitous language. Context maps. This is about understanding your business domain.</p>
+<p><strong>Tactical DDD</strong>: The patterns. Entities, value objects, aggregates, repositories, domain services. This is where things go wrong.</p>
+<p>Strategic DDD? Almost always valuable.<br>
+Tactical DDD? Usually over-engineering.</p>
+<h2 id="strategic-ddd-the-part-that-actually-helps">Strategic DDD: The Part That Actually Helps</h2>
+<p>Bounded contexts are brilliant. Simple idea: different parts of your system have different models.</p>
+<p>“User” means something different in:</p>
+<ul>
+<li>Authentication context (username, password)</li>
+<li>Billing context (payment methods, invoices)</li>
+<li>Support context (tickets, satisfaction scores)</li>
+</ul>
+<p>The key insight is not forcing one model everywhere.</p>
+<p>Ubiquitous language is also great because everyone uses the same terms - developers, product, and business people all speak the same language with no translation needed.</p>
+<p>This stuff works. It’s not complicated. You can apply it tomorrow.</p>
+<h2 id="tactical-ddd-where-dreams-go-to-die">Tactical DDD: Where Dreams Go to Die</h2>
+<p>Now the painful part.</p>
+<h3 id="the-repository-pattern-hell">The Repository Pattern Hell</h3>
+<p>Started with one repository. Now you have:</p>
+<ul>
+<li>UserRepository</li>
+<li>Its interface UserRepositoryInterface</li>
+<li>The implementation UserRepositoryImpl</li>
+<li>InMemoryUserRepository for your tests</li>
+<li>Don’t forget CachedUserRepository</li>
+<li>And of course, UserRepositoryFactory</li>
+</ul>
+<p>To save a user? Seven files to modify.</p>
+<h3 id="value-objects-for-everything">Value Objects for Everything</h3>
+<p>Phone number? Value object.<br>
+Email? Value object.<br>
+User status? Value object.</p>
+<blockquote>
+<p>I’ll use Go for examples, but read it as pseudocode. The pain is universal.</p>
+</blockquote>
+<p>Your User entity:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> User</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    id        </span><span style="color:#B392F0">UserId</span></span>
+<span class="line"><span style="color:#E1E4E8">    email     </span><span style="color:#B392F0">EmailValueObject</span></span>
+<span class="line"><span style="color:#E1E4E8">    phone     </span><span style="color:#B392F0">PhoneValueObject</span></span>
+<span class="line"><span style="color:#E1E4E8">    status    </span><span style="color:#B392F0">UserStatusValueObject</span></span>
+<span class="line"><span style="color:#E1E4E8">    createdAt </span><span style="color:#B392F0">DateTimeValueObject</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> NewUser</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">    id</span><span style="color:#B392F0"> UserId</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    email</span><span style="color:#B392F0"> EmailValueObject</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    phone</span><span style="color:#B392F0"> PhoneValueObject</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    status</span><span style="color:#B392F0"> UserStatusValueObject</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    createdAt</span><span style="color:#B392F0"> DateTimeValueObject</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">) (</span><span style="color:#F97583">*</span><span style="color:#B392F0">User</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">error</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // validation logic here</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> &#x26;</span><span style="color:#B392F0">User</span><span style="color:#E1E4E8">{id, email, phone, status, createdAt}, </span><span style="color:#79B8FF">nil</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Congratulations. You’ve turned a database row into a philosophy degree.</p>
+<h3 id="the-aggregate-root-nightmare">The Aggregate Root Nightmare</h3>
+<p>“Only access entities through aggregate roots!”</p>
+<p>Now you load the entire Customer aggregate to check an email. Including their orders. Their addresses. Their payment methods.</p>
+<p>Need to update a phone number? Load everything. Modify through the aggregate. Save everything.</p>
+<p>Your database weeps.</p>
+<h3 id="domain-events-everywhere">Domain Events Everywhere</h3>
+<p>User registered? Domain event.<br>
+When email changes, that’s another event.<br>
+User logs in? You guessed it - domain event.</p>
+<p>Now you have:</p>
+<ul>
+<li>EventBus to route them</li>
+<li>EventDispatcher to send them</li>
+<li>An EventStore to persist everything</li>
+<li>EventHandlers and EventListeners</li>
+<li>Don’t forget EventProjections</li>
+</ul>
+<p>Your 10-user app has enterprise-grade event sourcing. Why?</p>
+<h2 id="the-real-cost-of-tactical-ddd">The Real Cost of Tactical DDD</h2>
+<p><strong>Onboarding Hell</strong>: New developer needs three weeks to understand your “domain model.” Could have been productive in three days.</p>
+<p><strong>Simple Changes Become Complex</strong>: Adding a field? Update the entity, value object, repository, mapper, DTO, and five other layers.</p>
+<p><strong>Performance Dies</strong>: Loading full aggregates for simple queries. N+1 problems everywhere. ORMs can’t optimize your “pure domain model.”</p>
+<p><strong>Testing Nightmare</strong>: Mocking repositories, services, factories. Unit tests that test nothing. Integration tests that take forever.</p>
+<h2 id="when-tactical-ddd-makes-sense">When Tactical DDD Makes Sense</h2>
+<p>It’s not always bad - sometimes tactical DDD is exactly the right choice.</p>
+<p><strong>Complex Business Logic</strong>: Trading systems. Insurance calculations. Medical diagnosis. When the logic is the product.</p>
+<p><strong>Regulatory Requirements</strong>: Audit trails. Compliance. When you need to prove why decisions were made.</p>
+<p><strong>Long-Term Investment</strong>: Building for 10+ years. The upfront cost pays off.</p>
+<p>Note what’s NOT on this list: “large teams.” Large teams need simplicity, not more abstractions. They need clear boundaries (strategic DDD), not repository patterns.</p>
+<h2 id="the-pragmatic-approach">The Pragmatic Approach</h2>
+<p>Here’s what actually works:</p>
+<h3 id="use-strategic-ddd-always">Use Strategic DDD Always</h3>
+<ul>
+<li>Identify bounded contexts</li>
+<li>Build ubiquitous language</li>
+<li>Keep contexts separate</li>
+<li>Clear interfaces between contexts</li>
+</ul>
+<h3 id="use-tactical-ddd-selectively">Use Tactical DDD Selectively</h3>
+<p>Start simple:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> UserService</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    db </span><span style="color:#F97583">*</span><span style="color:#B392F0">sql</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">DB</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">s </span><span style="color:#F97583">*</span><span style="color:#B392F0">UserService</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">CreateUser</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">ctx</span><span style="color:#B392F0"> context</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Context</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">email</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">name</span><span style="color:#F97583"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">error</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // validation</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#F97583"> !</span><span style="color:#B392F0">isValidEmail</span><span style="color:#E1E4E8">(email) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> errors.</span><span style="color:#B392F0">New</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"invalid email"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // business logic</span></span>
+<span class="line"><span style="color:#6A737D">    // save to database</span></span>
+<span class="line"><span style="color:#E1E4E8">    _, err </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> s.db.</span><span style="color:#B392F0">ExecContext</span><span style="color:#E1E4E8">(ctx,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "INSERT INTO users (email, name) VALUES ($1, $2)"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        email, name,</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> err</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Extract patterns when pain appears:</p>
+<ul>
+<li>Repeated validation? Extract value object</li>
+<li>Complex state changes? Add domain events</li>
+<li>Invariants to protect? Create aggregate</li>
+</ul>
+<p>But not before.</p>
+<h3 id="the-8020-rule">The 80/20 Rule</h3>
+<p>Since 80% of your app is CRUD, you should treat it like CRUD.</p>
+<p>20% is your core domain. That’s where you might need DDD patterns.</p>
+<p>Don’t apply enterprise patterns to your user preferences screen.</p>
+<h2 id="my-ddd-simplification-rules">My DDD Simplification Rules</h2>
+<ol>
+<li><strong>Start with services and plain objects</strong></li>
+<li><strong>Add repositories when you have multiple data sources</strong></li>
+<li><strong>Add value objects when validation repeats</strong></li>
+<li><strong>Add aggregates when invariants need protection</strong></li>
+<li><strong>Add domain events when decoupling is necessary</strong></li>
+<li><strong>Never add patterns preemptively</strong></li>
+</ol>
+<h2 id="the-reality-check">The Reality Check</h2>
+<p>Most systems don’t need tactical DDD.</p>
+<p>They need:</p>
+<ul>
+<li>Clear module boundaries (strategic DDD)</li>
+<li>Consistent naming (ubiquitous language)</li>
+<li>Simple, testable code</li>
+<li>Fast development cycles</li>
+</ul>
+<p>Your e-commerce site? Unless you’re Amazon, CRUD with good structure beats DDD.<br>
+Your SaaS app? Service layer with validation works fine.<br>
+Your startup? Ship features, not abstractions.</p>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<p>Remember that DDD is a tool, not a religion.</p>
+<p>Strategic DDD is free value, so definitely use it.</p>
+<p>But with tactical DDD, you need to be very careful.</p>
+<p>Start simple. Add complexity when pain justifies it. Not because a book said so.</p>
+<p>Because here’s the truth: customers don’t care about your beautiful domain model. They care about features that work.</p>
+<p>And you can’t ship features when you’re drowning in repositories and value objects.</p>
+<p>Wrestling with DDD complexity? I help teams find the right balance between patterns and pragmatism.</p> </article> <!-- Tags Section with enhanced design --> <div class="max-w-3xl mx-auto mb-16"> <div class="relative bg-zinc-800/30 rounded-2xl p-8 border border-zinc-700"> <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Topics Covered</h3> <div class="flex gap-2 flex-wrap"> <a href="/blog/tag/architecture" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">architecture</span> </a><a href="/blog/tag/ddd" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">ddd</span> </a><a href="/blog/tag/over-engineering" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">over-engineering</span> </a><a href="/blog/tag/design-patterns" class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"> <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path> </svg> <span class="text-sm font-medium">design-patterns</span> </a> </div> </div> </div> <!-- Enhanced Navigation --> <nav class="max-w-3xl mx-auto"> <div class="flex flex-col sm:flex-row gap-4 justify-center"> <a href="/blog" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"> <line x1="19" y1="12" x2="5" y2="12"></line> <polyline points="12 19 5 12 12 5"></polyline> </svg>
+Back to Blog
+</a> <a href="/" class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold">
+View Services
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"> <line x1="5" y1="12" x2="19" y2="12"></line> <polyline points="12 5 19 12 12 19"></polyline> </svg> </a> </div> </nav> </div> </main> <footer class="bg-black py-12"> <div class="container mx-auto px-4 max-w-5xl"> <div class="text-center"> <div class="flex justify-center gap-6 mb-6"> <a href="/blog" class="text-zinc-400 hover:text-white transition-colors hover:underline">Blog</a> <a href="https://www.linkedin.com/in/dmytro-momot/" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">LinkedIn</a> <a href="https://github.com/dmitrymomot" target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">GitHub</a> <a href="mailto:contact@dmomot.com" class="text-zinc-400 hover:text-white transition-colors hover:underline">Email</a> </div> <div> <p class="text-zinc-500 text-sm">© 2025 Dmytro Momot. All rights reserved.</p> <div class="mt-2"> <a href="/privacy" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a> <a href="/terms" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a> </div> </div> </div> </div> </footer>  </body></html>
