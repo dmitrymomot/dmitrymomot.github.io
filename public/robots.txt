@@ -1,0 +1,13 @@
+# Robots.txt for dmomot.com
+# Allow all crawlers
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap location
+Sitemap: https://dmomot.com/sitemap-index.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
