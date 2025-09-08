@@ -6,8 +6,8 @@ description: "With 15+ years in software development and technical leadership, I
 
 status:
     available: false
-    text: "On vacation until October 1, 2025"
-    color: "yellow" # Options: green, yellow, red, gray
+    text: "Unavailable until Oct 1, 2025"
+    color: "red" # Options: green, yellow, red, gray
 
 problemsSolve:
     title: "Technical Challenges I Solve"
