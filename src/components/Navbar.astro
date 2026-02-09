@@ -2,10 +2,11 @@
 const pathname = Astro.url.pathname;
 const isHome = pathname === '/';
 const isBlog = pathname.startsWith('/blog');
+const isUses = pathname.startsWith('/uses');
 ---
 
 <header class="bg-[#16171B]">
-  <nav class="max-w-[1440px] mx-auto flex items-center justify-between py-5 px-6 lg:px-[120px]">
+  <nav class="max-w-[1280px] mx-auto flex items-center justify-between py-5 px-6 lg:px-[120px]">
     <!-- Logo -->
     <a href="/" class="text-2xl font-bold text-[#22C55E]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">
       dm
@@ -32,6 +33,15 @@ const isBlog = pathname.startsWith('/blog');
           ]}
         >
           Blog
+        </a>
+        <a
+          href="/uses"
+          class:list={[
+            "font-mono text-xs uppercase tracking-wider transition-colors",
+            isUses ? "text-[#22C55E]" : "text-[#71717A] hover:text-zinc-300"
+          ]}
+        >
+          Uses
         </a>
       </div>
 
@@ -78,7 +88,7 @@ const isBlog = pathname.startsWith('/blog');
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden border-t border-[#2A2B30]">
-    <div class="max-w-[1440px] mx-auto px-6">
+    <div class="max-w-[1280px] mx-auto px-6">
       <div class="py-4 space-y-2">
         <a
           href="/"
@@ -97,6 +107,15 @@ const isBlog = pathname.startsWith('/blog');
           ]}
         >
           Blog
+        </a>
+        <a
+          href="/uses"
+          class:list={[
+            "block py-2 font-mono text-xs uppercase tracking-wider",
+            isUses ? "text-[#22C55E]" : "text-[#71717A]"
+          ]}
+        >
+          Uses
         </a>
       </div>
     </div>
