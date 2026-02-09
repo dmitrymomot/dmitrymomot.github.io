@@ -6,45 +6,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Dmytro Momot's personal website and consulting portfolio built with Astro, featuring a blog and service offerings. The site outputs to `docs/` for GitHub Pages deployment.
 
+## Prerequisites
+
+- Node.js v25+ and npm
+
 ## Tech Stack
 
-- **Framework**: Astro v5.13.3 with TypeScript strict mode
+- **Framework**: Astro with TypeScript strict mode
 - **Styling**: Tailwind CSS v4 via @tailwindcss/vite
-- **Content**: Astro Content Collections (blog posts and pages)
+- **Content**: Astro Content Collections (blog, pages, legal)
+- **Integrations**: @astrojs/sitemap, remark-breaks
 - **Deployment**: GitHub Pages from master branch `docs/` folder
 - **Domain**: dmomot.com
 
 ## Development Commands
 
 ```bash
-# Development server (http://localhost:4321)
-npm run dev
-# or
-make dev
+npm install          # or: make install
+npm run dev          # or: make dev — starts dev server at http://localhost:4321
+npm run build        # or: make build — outputs to docs/
+npm run preview      # or: make preview — preview production build
+make clean           # removes docs/ directory
+make deploy          # builds and shows deployment instructions
+make check           # verifies build configuration
+```
 
-# Build to docs/ directory for GitHub Pages
-npm run build
-# or
-make build
+## Directory Structure
 
-# Preview production build
-npm run preview
-# or
-make preview
-
-# Deploy workflow
-make deploy  # Builds and shows deployment instructions
-git add docs && git commit -m "Deploy site" && git push origin master
-
-# Check build configuration
-make check
+```
+src/
+├── components/       # Footer.astro, Navbar.astro
+├── content/
+│   ├── blog/         # Blog posts (markdown)
+│   ├── legal/        # Privacy policy, terms of service
+│   ├── pages/        # Homepage content (home.md)
+│   └── config.ts     # Collection schemas
+├── layouts/          # Layout.astro (base layout)
+├── pages/            # Astro page routes
+└── styles/           # global.css (Tailwind imports)
 ```
 
 ## Content Architecture
 
 ### Content Collections (`src/content/config.ts`)
 
-Two collections with strict schemas:
+Three collections with strict schemas:
 
 1. **Blog** (`src/content/blog/*.md`):
    - Required: `title`, `description`, `publishDate`
@@ -54,6 +60,10 @@ Two collections with strict schemas:
    - Complex schema for homepage content including services, experience, contact info
    - Currently used for `home.md` which drives the main landing page
 
+3. **Legal** (`src/content/legal/*.md`):
+   - Required: `title`, `description`, `lastUpdated`
+   - Contains `privacy.md` and `terms.md`
+
 ### Page Routes
 
 - `/` - Homepage from `src/content/pages/home.md`
@@ -61,6 +71,8 @@ Two collections with strict schemas:
 - `/blog/[id]` - Individual blog posts
 - `/blog/tags` - All tags page
 - `/blog/tag/[tag]/[...page]` - Posts by tag
+- `/privacy`, `/terms` - Legal pages via `[...legal].astro` catch-all
+- `/404` - Custom 404 page
 
 ## Adding Blog Posts
 
@@ -80,6 +92,13 @@ Content with markdown support including line breaks (via remark-breaks plugin).
 
 ## Key Configuration
 
-- **astro.config.mjs**: Sets `outDir: './docs'` for GitHub Pages
-- **public/CNAME**: Contains domain configuration
+- **astro.config.mjs**: Sets `outDir: './docs'`, configures sitemap and remark-breaks
+- **public/CNAME**: Contains domain configuration (`dmomot.com`)
+- **public/robots.txt**: Search engine directives
 - **Makefile**: Provides convenient build/deploy commands
+
+## Gotchas
+
+- **`docs/` is committed to git** — it's the GitHub Pages deploy artifact, not a documentation folder. Don't add it to `.gitignore`.
+- **Tailwind v4** — uses `@tailwindcss/vite` plugin (not PostCSS). CSS imports go through `src/styles/global.css`.
+- **Content loaders** — collections use `glob()` loader pattern (Astro v5 style), not the legacy file-based routing.
