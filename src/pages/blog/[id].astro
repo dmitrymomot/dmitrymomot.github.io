@@ -5,16 +5,24 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(post => ({
+  // Sort by date for prev/next navigation
+  posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+  return posts.map((post, index) => ({
     params: { id: post.id },
-    props: { post },
+    props: {
+      post,
+      prevPost: index < posts.length - 1 ? posts[index + 1] : null,
+      nextPost: index > 0 ? posts[index - 1] : null,
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 
-// Enhanced SEO data for blog posts
+const firstTag = post.data.tags[0] || 'blog';
+
 const articleLD = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -39,98 +47,98 @@ const articleLD = {
 };
 ---
 
-<Layout 
-  title={`${post.data.title} - Dmytro Momot`} 
+<Layout
+  title={`${post.data.title} - Dmytro Momot`}
   description={post.data.description}
   type="article"
   image="/og-blog-image.jpg"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleLD)} />
-  <!-- Hero Section - Clean and Focused -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
-    <!-- Subtle animated background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-72 h-72 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 py-16 md:py-20 max-w-4xl relative">
-      <header class="text-center max-w-3xl mx-auto">
-        <!-- Simple Date -->
-        <div class="text-sm text-zinc-500 mb-6">
-          {post.data.publishDate.toLocaleDateString('en-US', { 
-            month: 'long', 
+
+  <div class="h-px bg-[#2A2B30]"></div>
+
+  <!-- Article Header -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-5 pt-[60px] pb-10 px-6 lg:px-[320px]">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2">
+        <a href="/blog" class="font-mono text-[11px] font-medium text-[#52525B] hover:text-[#71717A] transition-colors">Blog</a>
+        <span class="font-mono text-[11px] text-[#3F3F46]">/</span>
+        <a href={`/blog/tag/${firstTag}`} class="font-mono text-[11px] font-medium text-[#22C55E]">{firstTag}</a>
+      </nav>
+
+      <h1 class="text-3xl md:text-[42px] font-bold text-[#F4F4F5]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1.5px; line-height: 1.15;">
+        {post.data.title}
+      </h1>
+
+      <!-- Meta -->
+      <div class="flex items-center gap-4">
+        <span class="font-mono text-xs font-medium text-[#52525B]">
+          {post.data.publishDate.toLocaleDateString('en-US', {
+            month: 'long',
             day: 'numeric',
             year: 'numeric'
           })}
-        </div>
-        
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-          {post.data.title}
-        </h1>
-        <p class="text-lg text-zinc-400 leading-relaxed">
-          {post.data.description}
-        </p>
-      </header>
+        </span>
+        <span class="font-mono text-xs text-[#3F3F46]">&middot;</span>
+        <span class="font-mono text-xs font-medium text-[#52525B]">Dmytro Momot</span>
+      </div>
     </div>
   </section>
 
-  <main class="relative">
-    {/* Removed decorative line */}
-    
-    <div class="container mx-auto px-4 py-16 max-w-4xl">
+  <!-- Article Body -->
+  <main class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-[320px] pb-[60px]">
+      <!-- Lead paragraph (description) -->
+      <p class="text-lg italic font-medium text-[#A1A1AA] mb-8" style="line-height: 1.7;">
+        {post.data.description}
+      </p>
 
-      <!-- Article Content -->
-      <article class="prose-custom max-w-3xl mx-auto mb-16">
+      <!-- Green divider -->
+      <div class="w-[60px] h-0.5 bg-[#22C55E] mb-8"></div>
+
+      <article class="prose-custom">
         <Content />
       </article>
 
-      <!-- Tags Section with enhanced design -->
-      <div class="max-w-3xl mx-auto mb-16">
-        <div class="relative bg-zinc-800/30 rounded-2xl p-8 border border-zinc-700">
-          <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Topics Covered</h3>
-          <div class="flex gap-2 flex-wrap">
-            {post.data.tags.map((tag) => (
-              <a 
-                href={`/blog/tag/${tag}`}
-                class="group inline-flex items-center gap-1 px-4 py-2 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200"
-              >
-                <svg class="w-3 h-3 text-[#9ECBFF] group-hover:text-[#9ECBFF]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-sm font-medium">{tag}</span>
-              </a>
-            ))}
-          </div>
-        </div>
+      <!-- Tags -->
+      <div class="border-t border-[#2A2B30] pt-5 flex gap-2 flex-wrap">
+        {post.data.tags.map((tag) => (
+          <a
+            href={`/blog/tag/${tag}`}
+            class="border border-[#3F3F46] rounded-sm px-3 py-1 font-mono text-[10px] font-medium text-[#52525B] hover:text-[#71717A] hover:border-[#52525B] transition-colors"
+          >
+            {tag}
+          </a>
+        ))}
       </div>
-
-      <!-- Enhanced Navigation -->
-      <nav class="max-w-3xl mx-auto">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/blog" 
-            class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Back to Blog
-          </a>
-          <a 
-            href="/" 
-            class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9ECBFF]/20 backdrop-blur-sm border border-[#9ECBFF]/50 text-[#9ECBFF] rounded-lg hover:bg-[#9ECBFF]/30 hover:border-[#9ECBFF] hover:scale-105 transition-all duration-200 ease-in-out font-semibold"
-          >
-            View Services
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </nav>
     </div>
   </main>
+
+  <!-- Prev/Next Navigation -->
+  {(prevPost || nextPost) && (
+    <section class="bg-[#16171B]">
+      <div class="max-w-[1280px] mx-auto flex justify-between gap-8 px-6 lg:px-[320px] py-10 border-t border-[#2A2B30]">
+        {prevPost ? (
+          <a href={`/blog/${prevPost.id}`} class="flex flex-col gap-1.5 group">
+            <span class="font-mono text-[10px] font-medium text-[#52525B]">&larr; PREVIOUS</span>
+            <span class="text-base font-semibold text-[#F4F4F5] group-hover:text-[#22C55E] transition-colors" style="font-family: 'Space Grotesk', sans-serif;">
+              {prevPost.data.title}
+            </span>
+          </a>
+        ) : <div />}
+        {nextPost ? (
+          <a href={`/blog/${nextPost.id}`} class="flex flex-col gap-1.5 items-end group">
+            <span class="font-mono text-[10px] font-medium text-[#52525B]">NEXT &rarr;</span>
+            <span class="text-base font-semibold text-[#F4F4F5] group-hover:text-[#22C55E] transition-colors" style="font-family: 'Space Grotesk', sans-serif;">
+              {nextPost.data.title}
+            </span>
+          </a>
+        ) : <div />}
+      </div>
+    </section>
+  )}
+
+  <div class="h-px bg-[#2A2B30]"></div>
   <Footer />
 </Layout>
