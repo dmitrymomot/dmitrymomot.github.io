@@ -2,8 +2,8 @@
 
 /* Custom accent color */
 :root {
-  --accent-color: #79B8FF;
-  --accent-hover: #9ECBFF;
+  --accent-color: #22C55E;
+  --accent-hover: #16A34A;
 }
 
 /* Custom link styles */
@@ -28,33 +28,35 @@
   /* Font families */
   :root {
     --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --font-mono: 'Roboto Mono', 'Courier New', monospace;
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
   }
-  
+
   /* Base typography */
   body {
     font-family: var(--font-sans);
-    font-feature-settings: "liga" 1, "calt" 1; /* Enable ligatures */
+    font-feature-settings: "liga" 1, "calt" 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.2;
   }
-  
+
   /* Code blocks */
   pre, code {
     font-family: var(--font-mono);
   }
-  
+
   /* Selection colors */
   ::selection {
-    background-color: rgba(158, 203, 255, 0.3);
+    background-color: rgba(34, 197, 94, 0.3);
     @apply text-zinc-100;
   }
 }
@@ -62,172 +64,207 @@
 /* Prose styles for blog content */
 @layer components {
   .prose-custom {
-    @apply text-zinc-300;
-    font-size: 1.125rem; /* 18px */
-    line-height: 1.75;
+    color: #A1A1AA;
+    font-size: 1rem;
+    line-height: 1.8;
   }
-  
+
   .prose-custom h1 {
-    @apply text-4xl md:text-5xl font-bold mb-6 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-4xl md:text-5xl font-bold mb-6;
+    color: #F4F4F5;
     line-height: 1.1;
   }
-  
+
   .prose-custom h2 {
-    @apply text-2xl md:text-3xl font-semibold mt-12 mb-6 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #F4F4F5;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
     line-height: 1.3;
   }
-  
+
   .prose-custom h3 {
-    @apply text-xl md:text-2xl font-semibold mt-8 mb-4 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-xl md:text-2xl font-semibold mt-8 mb-4;
+    color: #F4F4F5;
   }
-  
+
   .prose-custom h4 {
-    @apply text-lg md:text-xl font-semibold mt-6 mb-3 text-zinc-200;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-lg md:text-xl font-semibold mt-6 mb-3;
+    color: #E4E4E7;
   }
-  
+
   .prose-custom h5 {
-    @apply text-base md:text-lg font-semibold mt-4 mb-2 text-zinc-200;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-base md:text-lg font-semibold mt-4 mb-2;
+    color: #E4E4E7;
   }
-  
+
   .prose-custom h6 {
-    @apply text-sm md:text-base font-semibold mt-4 mb-2 text-zinc-300;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-sm md:text-base font-semibold mt-4 mb-2;
+    color: #D4D4D8;
   }
-  
+
   .prose-custom p {
     @apply mb-6;
   }
-  
+
   .prose-custom ul {
     @apply mb-6 pl-6 space-y-2;
     list-style-type: disc;
   }
-  
+
   .prose-custom ol {
     @apply mb-6 pl-6 space-y-2;
     list-style-type: decimal;
   }
-  
+
   .prose-custom ul ul {
     list-style-type: circle;
   }
-  
+
   .prose-custom ul ul ul {
     list-style-type: square;
   }
-  
+
   .prose-custom li {
-    @apply text-zinc-300;
+    color: #A1A1AA;
     padding-left: 0.5rem;
   }
-  
+
   .prose-custom li::marker {
-    @apply text-zinc-500;
+    color: #52525B;
   }
-  
+
   .prose-custom blockquote {
-    @apply border-l-4 pl-4 italic my-6 text-zinc-400;
-    border-left-color: var(--accent-color);
+    border-left: 3px solid #22C55E;
+    background: #1E2026;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 1.5rem 0;
+    font-style: italic;
+    font-weight: 500;
+    color: #F4F4F5;
+    line-height: 1.6;
   }
-  
+
+  .prose-custom blockquote p {
+    margin-bottom: 0;
+  }
+
   .prose-custom code:not(pre code) {
-    @apply bg-zinc-800 px-1.5 py-0.5 rounded text-sm font-medium text-[#9ECBFF];
+    @apply bg-zinc-800 px-1.5 py-0.5 rounded text-sm font-medium;
+    color: var(--accent-color);
     font-size: 0.875em;
   }
-  
+
   .prose-custom pre {
     @apply bg-black text-zinc-100 p-4 rounded-lg overflow-x-auto my-8 border border-zinc-800;
     font-size: 0.875rem;
     line-height: 1.7;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   }
-  
+
   .prose-custom pre code {
     @apply text-zinc-100;
     background: none;
     padding: 0;
   }
-  
+
   .prose-custom a {
     @apply underline underline-offset-2;
     color: var(--accent-color);
   }
-  
+
   .prose-custom a:hover {
     color: var(--accent-hover);
   }
-  
-  
+
   .prose-custom strong {
-    @apply font-bold text-zinc-100;
+    @apply font-bold;
+    color: #F4F4F5;
   }
-  
+
   .prose-custom em {
-    @apply italic text-zinc-200;
+    @apply italic;
+    color: #D4D4D8;
   }
-  
+
   .prose-custom mark {
-    background-color: rgba(158, 203, 255, 0.4);
+    background-color: rgba(34, 197, 94, 0.4);
     @apply text-zinc-100 px-1 rounded;
     padding-top: 0.125rem;
     padding-bottom: 0.125rem;
   }
-  
+
   .prose-custom table {
     @apply w-full my-8 border-collapse overflow-hidden rounded-lg;
   }
-  
+
   .prose-custom thead {
-    @apply bg-zinc-800/50;
+    background: rgba(39, 39, 42, 0.5);
   }
-  
+
   .prose-custom th {
-    @apply border-b-2 border-zinc-700 px-4 py-3 text-left font-semibold text-zinc-100;
+    border-bottom: 2px solid #2A2B30;
+    @apply px-4 py-3 text-left font-semibold;
+    color: #F4F4F5;
   }
-  
+
   .prose-custom td {
-    @apply border-b border-zinc-800 px-4 py-3 text-zinc-300;
+    border-bottom: 1px solid #27272A;
+    @apply px-4 py-3;
+    color: #A1A1AA;
   }
-  
+
   .prose-custom tbody tr:hover {
-    @apply bg-zinc-800/20;
+    background: rgba(39, 39, 42, 0.2);
   }
-  
+
   .prose-custom img {
     @apply rounded-lg my-8 mx-auto shadow-xl;
     max-width: 100%;
     height: auto;
   }
-  
+
   .prose-custom hr {
-    @apply my-12 border-zinc-700;
+    @apply my-12;
+    border-color: #2A2B30;
   }
-  
+
   /* Better spacing between different elements */
   .prose-custom > * + h2 {
     @apply mt-16;
   }
-  
+
   .prose-custom > * + h3 {
     @apply mt-12;
   }
-  
+
   /* Nested list styling */
   .prose-custom li > ul,
   .prose-custom li > ol {
     @apply mt-2 mb-2;
   }
-  
-  
+
   /* Definition list styling */
   .prose-custom dl {
     @apply my-6;
   }
-  
+
   .prose-custom dt {
-    @apply font-semibold text-zinc-100 mb-2;
+    @apply font-semibold mb-2;
+    color: #F4F4F5;
   }
-  
+
   .prose-custom dd {
-    @apply ml-6 mb-4 text-zinc-300;
+    @apply ml-6 mb-4;
+    color: #A1A1AA;
   }
 }

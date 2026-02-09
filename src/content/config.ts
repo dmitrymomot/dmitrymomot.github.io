@@ -25,78 +25,50 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
-    subtitle: z.string().optional(),
-    tagline: z.string().optional(),
-    description: z.string().optional(),
-    status: z.object({
-      available: z.boolean(),
-      text: z.string(),
-      color: z.enum(['green', 'yellow', 'red', 'gray']),
-    }).optional(),
-    problemsSolve: z.object({
-      title: z.string(),
-      intro: z.string(),
-      items: z.array(z.string()),
-      outro: z.string(),
-    }).optional(),
-    services: z.object({
-      title: z.string(),
-      categories: z.array(z.object({
-        title: z.string(),
-        items: z.array(z.string()),
-      })).optional(),
-      items: z.array(z.object({
-        title: z.string(),
-        description: z.string(),
-      })).optional(),
-    }).optional(),
-    howIWork: z.object({
-      title: z.string(),
-      subtitle: z.string(),
-      engagements: z.array(z.object({
-        title: z.string(),
-        description: z.string(),
+    description: z.string(),
+
+    hero: z.object({
+      label: z.string(),
+      role: z.string(),
+      tagline: z.string(),
+      ctas: z.array(z.object({
+        text: z.string(),
+        url: z.string(),
+        icon: z.string().optional(),
+        style: z.enum(['filled', 'outline']),
       })),
-      principles: z.object({
-        title: z.string(),
-        intro: z.string(),
-        items: z.array(z.string()),
-      }),
-    }).optional(),
-    experience: z.object({
+    }),
+
+    whatIDo: z.array(z.object({
+      icon: z.string(),
       title: z.string(),
-      leadership: z.object({
-        title: z.string(),
-        items: z.array(z.string()),
-      }),
-      technical: z.object({
-        title: z.string(),
-        items: z.array(z.string()),
-      }),
-      stats: z.string(),
-    }).optional(),
+      description: z.string(),
+      tags: z.array(z.string()),
+    })),
+
+    techStack: z.array(z.object({
+      title: z.string(),
+      items: z.array(z.object({
+        name: z.string(),
+        primary: z.boolean().default(true),
+      })),
+    })),
+
     about: z.object({
       title: z.string(),
-      content: z.string(),
-      location: z.string().optional(),
-      serving: z.string().optional(),
-    }).optional(),
-    contact: z.object({
-      title: z.string(),
-      intro: z.string(),
-      content: z.string(),
-      email: z.string(),
-      calendlyLink: z.string().optional(),
-    }).optional(),
+      paragraphs: z.array(z.string()),
+      principles: z.array(z.string()),
+      location: z.object({
+        city: z.string(),
+        detail: z.string(),
+      }),
+    }),
+
     social: z.object({
       github: z.string().optional(),
       linkedin: z.string().optional(),
       twitter: z.string().optional(),
       email: z.string().optional(),
-    }).optional(),
-    footer: z.object({
-      tagline: z.string(),
-      copyright: z.string(),
     }).optional(),
   }),
 });

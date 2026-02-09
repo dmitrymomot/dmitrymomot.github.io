@@ -8,10 +8,9 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const posts = await getCollection('blog', ({ data }) => {
     return !data.draft;
   });
-  
+
   posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
-  
-  // Return paginated collection with 5 posts per page
+
   return paginate(posts, { pageSize: 5 });
 };
 
@@ -19,264 +18,93 @@ const { page } = Astro.props;
 ---
 
 <Layout title="Blog - Dmytro Momot" description="Articles about software development, architecture, and technology">
-  <!-- Hero Section - Simplified and Elegant -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
-    <!-- Subtle animated background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 py-16 md:py-20 max-w-5xl relative">
-      <div class="text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-          Blog
-        </h1>
-        <p class="text-lg md:text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
-          Thoughts on software development, architecture, and technology leadership
-        </p>
-        
-        <!-- Simple CTA -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/blog/tags" 
-            class="group inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-            </svg>
-            Browse by Topics
-          </a>
-        </div>
+  <div class="h-px bg-[#2A2B30]"></div>
+
+  <!-- Blog Hero -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-4 pt-[60px] pb-10 px-6 lg:px-[120px]">
+      <p class="font-mono text-[11px] font-semibold text-[#71717A]">// BLOG</p>
+      <h1 class="text-3xl md:text-[40px] font-bold text-[#F4F4F5] max-w-[700px]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px; line-height: 1.2;">
+        Writing about engineering, leadership & building things
+      </h1>
+      <div class="flex items-center gap-4">
+        <span class="font-mono text-xs font-medium text-[#52525B]">{page.total} posts</span>
+        <span class="font-mono text-xs text-[#3F3F46]">&middot;</span>
+        <a href="/blog/tags" class="font-mono text-xs font-medium text-[#22C55E] hover:text-[#16A34A] transition-colors">
+          Browse by Topics &rarr;
+        </a>
       </div>
     </div>
   </section>
 
-  <main class="container mx-auto px-4 py-16 max-w-4xl">
-    <!-- Section Title -->
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        Recent Articles
-      </h2>
-      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
-    </div>
-
-    <!-- Posts Grid -->
-    <div class="grid gap-8 max-w-3xl mx-auto">
-      {page.data.map((post, index) => {
-        // Different decorative patterns based on index
-        const patterns = [
-          'geometric', // Rotating shapes
-          'wave',      // Wave pattern
-          'dots',      // Dot matrix
-          'circuit',   // Circuit board pattern
-          'gradient'   // Gradient orbs
-        ];
-        const pattern = patterns[index % patterns.length];
-        
-        return (
-        <article class="group relative mt-4">
-          <!-- Date Badge -->
-          <div class="absolute -top-3 left-8 px-4 py-1 bg-zinc-100 text-zinc-900 rounded-full text-xs font-semibold z-10">
-            {post.data.publishDate.toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric',
-              year: 'numeric'
-            })}
+  <!-- Posts List -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-[120px]">
+      {page.data.map((post) => (
+        <article class="flex flex-col md:flex-row gap-4 md:gap-10 py-7 border-t border-[#2A2B30]">
+          <div class="flex-shrink-0">
+            <time class="font-mono text-xs font-medium text-[#52525B] whitespace-nowrap">
+              {post.data.publishDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+              })}
+            </time>
           </div>
-          
-          <!-- Card Content -->
-          <div class="relative bg-zinc-800/50 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-zinc-700 overflow-hidden">
-            <!-- Content -->
-            <div class="space-y-4">
-            <h2 class="text-2xl md:text-3xl font-bold leading-tight">
-              <a href={`/blog/${post.id}`} class="block group-hover:text-[#9ECBFF] transition-colors">
+          <div class="flex flex-col gap-3">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.3px;">
+              <a href={`/blog/${post.id}`} class="text-[22px] font-bold text-[#F4F4F5] hover:text-[#22C55E] transition-colors">
                 {post.data.title}
               </a>
             </h2>
-            
-            <p class="text-zinc-400 leading-relaxed line-clamp-3">
+            <p class="text-sm text-[#71717A] leading-relaxed">
               {post.data.description}
             </p>
-            
-            <!-- Tags and Read More - Mobile: stacked, Desktop: same line -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-2">
-              <div class="flex gap-2 flex-wrap">
-                {post.data.tags.slice(0, 3).map((tag) => (
-                  <a 
-                    href={`/blog/tag/${tag}`}
-                    class="text-xs px-3 py-1.5 bg-zinc-700 rounded-full hover:bg-zinc-600 transition-colors"
-                  >
-                    #{tag}
-                  </a>
-                ))}
-                {post.data.tags.length > 3 && (
-                  <span class="text-xs px-3 py-1.5 text-zinc-500">
-                    +{post.data.tags.length - 3} more
-                  </span>
-                )}
-              </div>
-              
-              <a 
-                href={`/blog/${post.id}`} 
-                class="inline-flex items-center gap-2 text-sm font-medium link-accent group-hover:gap-3 transition-all"
-              >
-                Read more
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
+            <div class="flex gap-2 flex-wrap">
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/blog/tag/${tag}`}
+                  class="border border-[#3F3F46] rounded-sm px-2 py-0.5 font-mono text-[10px] font-medium text-[#52525B] hover:text-[#71717A] hover:border-[#52525B] transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
             </div>
-            
-            <!-- Decorative Elements -->
-            <div class="absolute top-0 right-0 w-40 h-40 overflow-hidden rounded-2xl pointer-events-none">
-            {pattern === 'geometric' && (
-              <>
-                <!-- Rotating geometric shapes -->
-                <div class="absolute top-4 right-4 w-24 h-24">
-                  <div class="absolute inset-0 border-2 border-[#9ECBFF] opacity-10 rounded-lg animate-spin" style={{animationDuration: '20s'}}></div>
-                  <div class="absolute inset-3 border border-[#79B8FF] opacity-15 rotate-45 animate-spin" style={{animationDuration: '30s', animationDirection: 'reverse'}}></div>
-                  <div class="absolute inset-6 border border-[#9ECBFF] opacity-10 rounded-full animate-spin" style={{animationDuration: '40s'}}></div>
-                </div>
-              </>
-            )}
-            
-            {pattern === 'wave' && (
-              <>
-                <!-- Wave pattern -->
-                <svg class="absolute top-0 right-0 w-40 h-40 opacity-10" viewBox="0 0 160 160">
-                  <path d="M0,80 Q40,60 80,80 T160,80" stroke="#9ECBFF" fill="none" strokeWidth="2" class="animate-pulse" style={{animationDuration: '4s'}} />
-                  <path d="M0,100 Q40,80 80,100 T160,100" stroke="#79B8FF" fill="none" strokeWidth="1.5" class="animate-pulse" style={{animationDuration: '5s'}} />
-                  <path d="M0,120 Q40,100 80,120 T160,120" stroke="#9ECBFF" fill="none" strokeWidth="1" class="animate-pulse" style={{animationDuration: '6s'}} />
-                </svg>
-              </>
-            )}
-            
-            {pattern === 'dots' && (
-              <>
-                <!-- Dot matrix -->
-                <div class="absolute top-4 right-4 grid grid-cols-5 gap-3 opacity-15">
-                  {[...Array(15)].map((_, i) => (
-                    <div 
-                      class={`w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-[#9ECBFF]' : 'bg-[#79B8FF]'} animate-pulse`}
-                      style={{animationDuration: `${4 + (i % 3)}s`}}
-                    ></div>
-                  ))}
-                </div>
-              </>
-            )}
-            
-            {pattern === 'circuit' && (
-              <>
-                <!-- Circuit board pattern -->
-                <svg class="absolute top-0 right-0 w-40 h-40 opacity-10" viewBox="0 0 160 160">
-                  <line x1="20" y1="20" x2="60" y2="20" stroke="#9ECBFF" strokeWidth="2" />
-                  <line x1="60" y1="20" x2="60" y2="60" stroke="#9ECBFF" strokeWidth="2" />
-                  <line x1="60" y1="60" x2="100" y2="60" stroke="#79B8FF" strokeWidth="2" />
-                  <line x1="100" y1="60" x2="100" y2="40" stroke="#79B8FF" strokeWidth="2" />
-                  <line x1="100" y1="40" x2="140" y2="40" stroke="#9ECBFF" strokeWidth="2" />
-                  <circle cx="20" cy="20" r="3" fill="#9ECBFF" />
-                  <circle cx="60" cy="60" r="3" fill="#79B8FF" />
-                  <circle cx="100" cy="40" r="3" fill="#9ECBFF" />
-                  <circle cx="140" cy="40" r="3" fill="#79B8FF" />
-                  <line x1="40" y1="80" x2="80" y2="80" stroke="#9ECBFF" strokeWidth="1" class="animate-pulse" style={{animationDuration: '4s'}} />
-                  <line x1="80" y1="80" x2="80" y2="120" stroke="#79B8FF" strokeWidth="1" class="animate-pulse" style={{animationDuration: '5s'}} />
-                </svg>
-              </>
-            )}
-            
-            {pattern === 'gradient' && (
-              <>
-                <!-- Gradient orbs -->
-                <div class="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-10 rounded-full blur-xl animate-pulse" style={{animationDuration: '4s'}}></div>
-                <div class="absolute top-12 right-12 w-20 h-20 bg-gradient-to-tl from-[#79B8FF] to-transparent opacity-5 rounded-full blur-lg animate-pulse" style={{animationDuration: '5s'}}></div>
-                <div class="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-[#9ECBFF] to-transparent opacity-5 rounded-full blur-md animate-pulse" style={{animationDuration: '6s'}}></div>
-              </>
-            )}
-            </div>
-            
-            <!-- Hover accent line -->
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
           </div>
         </article>
-        )
-      })}
+      ))}
     </div>
+  </section>
 
-    {/* Pagination Navigation */}
-    <nav class="mt-16">
-      {page.lastPage > 1 && (
-        <div class="flex justify-center items-center gap-4 mb-8">
-          {/* Previous Button */}
-          {page.url.prev ? (
-            <a 
-              href={page.url.prev} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              Previous
-            </a>
-          ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              Previous
-            </span>
-          )}
-          
-          {/* Page Numbers */}
-          <div class="flex gap-2 items-center">
-            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
-              <a 
-                href={num === 1 ? '/blog' : `/blog/${num}`}
-                class={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-all duration-200 ${
-                  num === page.currentPage 
-                    ? 'bg-zinc-100 text-zinc-900 scale-110' 
-                    : 'bg-zinc-800 hover:bg-zinc-700 hover:scale-105'
-                }`}
-              >
-                {num}
-              </a>
-            ))}
-          </div>
-          
-          {/* Next Button */}
-          {page.url.next ? (
-            <a 
-              href={page.url.next} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-            >
-              Next
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-          ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
-              Next
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
-          )}
-        </div>
-      )}
-      
-      <!-- Footer Info -->
-      <div class="text-center pt-8">
-        <p class="text-sm text-zinc-400">
-          Showing {((page.currentPage - 1) * 5) + 1}-{Math.min(page.currentPage * 5, page.total)} of {page.total} posts
-        </p>
+  <!-- Pagination -->
+  {page.lastPage > 1 && (
+    <section class="bg-[#16171B]">
+      <div class="max-w-[1280px] mx-auto flex justify-center items-center gap-2 py-10 px-6 lg:px-[120px]">
+        {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+          <a
+            href={num === 1 ? '/blog' : `/blog/${num}`}
+            class:list={[
+              "font-mono text-[13px] font-medium rounded-sm px-3.5 py-2 transition-colors",
+              num === page.currentPage
+                ? "bg-[#22C55E] text-[#16171B] font-bold"
+                : "border border-[#2A2B30] text-[#71717A] hover:text-[#F4F4F5] hover:border-[#3F3F46]"
+            ]}
+          >
+            {num}
+          </a>
+        ))}
+        {page.url.next && (
+          <a
+            href={page.url.next}
+            class="font-mono text-[13px] font-medium rounded-sm px-3.5 py-2 border border-[#2A2B30] text-[#71717A] hover:text-[#F4F4F5] hover:border-[#3F3F46] transition-colors"
+          >
+            &rarr;
+          </a>
+        )}
       </div>
-    </nav>
-  </main>
+    </section>
+  )}
+
+  <div class="h-px bg-[#2A2B30]"></div>
   <Footer />
 </Layout>
