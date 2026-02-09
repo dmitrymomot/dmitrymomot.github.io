@@ -1,35 +1,54 @@
 ---
 const currentYear = new Date().getFullYear();
-
-const social = {
-  linkedin: "https://www.linkedin.com/in/dmytro-momot/",
-  github: "https://github.com/dmitrymomot",
-  email: "contact@dmomot.com"
-};
-
-const footer = {
-  copyright: `© ${currentYear} Dmytro Momot. All rights reserved.`,
-  business: "IE Dmytro Momot • ITN: 3194620070 • Ukraine"
-};
 ---
 
-<footer class="bg-black py-12">
-  <div class="container mx-auto px-4 max-w-5xl">
-    <div class="text-center">
-      <div class="flex justify-center gap-6 mb-6">
-        <a href="/blog" class="text-zinc-400 hover:text-white transition-colors hover:underline">Blog</a>
-        <a href={social.linkedin} target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">LinkedIn</a>
-        <a href={social.github} target="_blank" class="text-zinc-400 hover:text-white transition-colors hover:underline">GitHub</a>
-        <a href={`mailto:${social.email}`} class="text-zinc-400 hover:text-white transition-colors hover:underline">Email</a>
-      </div>
+<footer class="bg-[#16171B]">
+  <div class="max-w-[1440px] mx-auto py-[60px] px-6 lg:px-[120px]">
+  <!-- Top row -->
+  <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+    <!-- Left: Logo + tagline -->
+    <div>
+      <a href="/" class="text-xl font-bold text-[#22C55E]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">dm</a>
+      <p class="mt-4 text-sm text-[#52525B] leading-relaxed">
+        Building systems. Leading teams.<br />
+        Shipping products.
+      </p>
+    </div>
+
+    <!-- Right: Link columns -->
+    <div class="flex gap-16">
+      <!-- Links column -->
       <div>
-        <p class="text-zinc-500 text-sm">{footer.copyright}</p>
-        <p class="text-zinc-600 text-xs mt-2">{footer.business}</p>
-        <div class="mt-4">
-          <a href="/privacy/" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm mr-4">Privacy Policy</a>
-          <a href="/terms/" class="text-zinc-500 hover:text-zinc-400 transition-colors text-sm">Terms of Service</a>
-        </div>
+        <h4 class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#71717A] mb-4">Links</h4>
+        <ul class="space-y-2.5">
+          <li><a href="/" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Home</a></li>
+          <li><a href="/blog" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Blog</a></li>
+          <li><a href="/uses" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Uses</a></li>
+          <li><a href="/privacy/" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Privacy Policy</a></li>
+          <li><a href="/terms/" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Terms of Use</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect column -->
+      <div>
+        <h4 class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#71717A] mb-4">Connect</h4>
+        <ul class="space-y-2.5">
+          <li><a href="https://github.com/dmitrymomot" target="_blank" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/dmitrymomot" target="_blank" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">LinkedIn</a></li>
+          <li><a href="mailto:contact@dmomot.com" class="text-sm text-[#52525B] hover:text-zinc-300 transition-colors">Email</a></li>
+        </ul>
       </div>
     </div>
+  </div>
+
+  <!-- Bottom row -->
+  <div class="border-t border-[#2A2B30] pt-8 flex flex-col md:flex-row justify-between gap-4">
+    <p class="font-mono text-[11px] text-[#3F3F46]">
+      &copy; {currentYear} Dmytro Momot. All rights reserved.
+    </p>
+    <p class="font-mono text-[11px] text-[#3F3F46]">
+      BUILT_WITH_PASSION // SHIPPED_WITH_INTENT
+    </p>
+  </div>
   </div>
 </footer>
