@@ -99,6 +99,11 @@ Content with markdown support including line breaks (via remark-breaks plugin).
 
 ## Gotchas
 
+- **Design file** — The .pen design file at `~/Documents/_Pencil_Design/dmomot-personal-website.pen` is the source of truth for visual design. Use Pencil MCP tools (`batch_get`, `get_screenshot`) to read it — never use `Read`/`Grep` on .pen files.
+- **Fonts** — Three Google Fonts loaded in Layout.astro: Inter (body), Roboto Mono (mono/labels), Space Grotesk (headings/logo). Space Grotesk requires inline `style` attribute since no Tailwind utility class maps to it.
+- **Container pattern** — Content constrained to `max-w-[1440px] mx-auto` per-section (not a global wrapper), so full-width backgrounds (e.g. Tech Stack `bg-[#1E2026]`) and dividers span the viewport. Sections with different bg use an outer element for color + inner div for max-width.
+- **Icons** — All icons use Lucide outline style (`fill="none" stroke="currentColor" stroke-width="2"`), not filled brand SVGs. This applies to navbar social icons, CTA button icons, and card icons.
+- **Homepage content lives in frontmatter** — `src/content/pages/home.md` frontmatter drives all homepage sections (hero, whatIDo cards, techStack, about). The template is `src/pages/index.astro`. Content changes go in the .md file; layout/style changes go in the .astro file.
 - **`docs/` is committed to git** — it's the GitHub Pages deploy artifact, not a documentation folder. Don't add it to `.gitignore`.
 - **Tailwind v4** — uses `@tailwindcss/vite` plugin (not PostCSS). CSS imports go through `src/styles/global.css`.
 - **Content loaders** — collections use `glob()` loader pattern (Astro v5 style), not the legacy file-based routing.
