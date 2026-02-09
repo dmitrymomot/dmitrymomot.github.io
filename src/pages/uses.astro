@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    label: '// DEVELOPMENT',
+    bg: '#16171B',
+    columns: [
+      {
+        title: 'EDITOR & IDE',
+        items: [
+          { name: 'Zed', desc: 'Primary code editor. Fast, minimal, multiplayer-ready.' },
+          { name: 'Claude Code (CLI)', desc: 'Agentic coding assistant. Runs in terminal alongside my workflow.' },
+          { name: 'Claude Cowork', desc: 'AI assistant for research, writing, planning — everything except code.' },
+        ],
+      },
+      {
+        title: 'TERMINAL & TOOLS',
+        items: [
+          { name: 'Ghostty', desc: 'GPU-accelerated terminal emulator. Fast and native.' },
+          { name: 'Docker + Docker Compose', desc: 'Local dev environments. Every project containerized.' },
+          { name: 'Pencil', desc: 'Design tool for UI prototyping and visual iteration.' },
+        ],
+      },
+    ],
+  },
+  {
+    label: '// HARDWARE',
+    bg: '#1E2026',
+    columns: [
+      {
+        title: 'DEVICES',
+        items: [
+          { name: 'MacBook Pro (Apple Silicon)', desc: 'M-chip. Main machine for development and everything else.' },
+          { name: 'iPhone', desc: 'Mobile testing and on-the-go communication.' },
+        ],
+      },
+      {
+        title: 'PERIPHERALS',
+        items: [
+          { name: 'AirPods 4', desc: 'Noise cancellation for deep work and calls.' },
+        ],
+      },
+    ],
+  },
+  {
+    label: '// STACK & INFRASTRUCTURE',
+    bg: '#16171B',
+    grids: [
+      [
+        {
+          title: 'DATABASES',
+          items: [
+            { name: 'PostgreSQL', desc: 'Default database. Rock solid for everything I build.' },
+            { name: 'Redis', desc: 'Caching, queues, pub/sub. Fast and versatile.' },
+            { name: 'MongoDB', desc: 'Document store for flexible schema use cases.' },
+            { name: 'SQLite', desc: 'Embedded database. Perfect for CLIs and single-server apps.' },
+          ],
+        },
+        {
+          title: 'INFRASTRUCTURE',
+          items: [
+            { name: 'DigitalOcean', desc: 'Cloud hosting for smaller projects and side builds.' },
+            { name: 'Hetzner', desc: 'Primary hosting. Great price-to-performance for production infra.' },
+            { name: 'Kubernetes + Docker', desc: 'Container orchestration. Everything runs in k8s.' },
+            { name: 'GitHub + GitHub Actions', desc: 'Code hosting, PRs, CI/CD pipelines. The whole workflow.' },
+          ],
+        },
+      ],
+      [
+        {
+          title: 'LANGUAGES',
+          items: [
+            { name: 'Go', desc: 'Primary language. 10+ years.' },
+            { name: 'Rust', desc: 'Learning and building side projects. Systems-level work.' },
+            { name: 'TypeScript / JavaScript', desc: 'Frontend and full-stack when needed.' },
+          ],
+        },
+        {
+          title: 'FRONTEND',
+          items: [
+            { name: 'HTMX', desc: 'Server-driven interactivity. Minimal JS, maximum simplicity.' },
+            { name: 'Alpine.js', desc: 'Lightweight reactivity. Pairs well with HTMX and server templates.' },
+            { name: 'gRPC + Connect', desc: 'Service-to-service and browser-to-server. Protobuf contracts.' },
+          ],
+        },
+      ],
+    ],
+  },
+  {
+    label: '// PRODUCTIVITY & TEAM',
+    bg: '#1E2026',
+    columns: [
+      {
+        title: 'KNOWLEDGE & DOCS',
+        items: [
+          { name: 'Obsidian', desc: 'Personal knowledge base. Markdown, local-first, linked notes.' },
+          { name: 'Notion', desc: 'Team documentation, specs, and shared wikis.' },
+          { name: 'Confluence', desc: 'Enterprise documentation for larger team engagements.' },
+        ],
+      },
+      {
+        title: 'PROJECT MANAGEMENT',
+        items: [
+          { name: 'LucidTask', desc: 'Task management and project planning. Clean and focused.' },
+          { name: 'Jira', desc: 'Issue tracking for enterprise and client projects.' },
+          { name: 'GitHub', desc: 'Code hosting, PRs, project boards. The engineering hub.' },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Uses - Dmytro Momot" description="Software, hardware, and services I use daily for engineering, leadership, and shipping products.">
+  <!-- Hero -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-6 pt-20 pb-[60px] px-6 lg:px-[120px]">
+      <p class="font-mono text-sm font-semibold text-[#22C55E]">// USES</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-[#F4F4F5]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">
+        Tools & Setup
+      </h1>
+      <p class="text-lg text-[#71717A] max-w-[700px]" style="line-height: 1.6;">
+        Software, hardware, and services I use daily for engineering, leadership, and shipping products. Inspired by uses.tech.
+      </p>
+    </div>
+  </section>
+
+  {sections.map((section) => (
+    <>
+      <div class="h-px bg-[#2A2B30]"></div>
+      <section style={`background: ${section.bg};`}>
+        <div class="max-w-[1280px] mx-auto flex flex-col gap-12 py-20 px-6 lg:px-[120px]">
+          <p class="font-mono text-[11px] font-semibold text-[#71717A]">{section.label}</p>
+
+          {section.columns && (
+            <div class="grid md:grid-cols-2 gap-6">
+              {section.columns.map((col) => (
+                <div class="border border-[#2A2B30] rounded p-7 flex flex-col gap-8">
+                  <h3 class="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider">{col.title}</h3>
+                  <div class="flex flex-col gap-5">
+                    {col.items.map((item) => (
+                      <div class="flex flex-col gap-1">
+                        <p class="text-[15px] font-semibold text-[#F4F4F5]">{item.name}</p>
+                        <p class="text-[13px] text-[#52525B]" style="line-height: 1.5;">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {section.grids && section.grids.map((gridRow) => (
+            <div class="grid md:grid-cols-2 gap-6">
+              {gridRow.map((col) => (
+                <div class="border border-[#2A2B30] rounded p-7 flex flex-col gap-8">
+                  <h3 class="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider">{col.title}</h3>
+                  <div class="flex flex-col gap-5">
+                    {col.items.map((item) => (
+                      <div class="flex flex-col gap-1">
+                        <p class="text-[15px] font-semibold text-[#F4F4F5]">{item.name}</p>
+                        <p class="text-[13px] text-[#52525B]" style="line-height: 1.5;">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  ))}
+
+  <div class="h-px bg-[#2A2B30]"></div>
+  <Footer />
+</Layout>
