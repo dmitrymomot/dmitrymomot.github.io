@@ -64,35 +64,51 @@
 /* Prose styles for blog content */
 @layer components {
   .prose-custom {
-    @apply text-zinc-300;
-    font-size: 1.125rem; /* 18px */
-    line-height: 1.75;
+    color: #A1A1AA;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
   .prose-custom h1 {
-    @apply text-4xl md:text-5xl font-bold mb-6 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-4xl md:text-5xl font-bold mb-6;
+    color: #F4F4F5;
     line-height: 1.1;
   }
 
   .prose-custom h2 {
-    @apply text-2xl md:text-3xl font-semibold mt-12 mb-6 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #F4F4F5;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
     line-height: 1.3;
   }
 
   .prose-custom h3 {
-    @apply text-xl md:text-2xl font-semibold mt-8 mb-4 text-zinc-100;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-xl md:text-2xl font-semibold mt-8 mb-4;
+    color: #F4F4F5;
   }
 
   .prose-custom h4 {
-    @apply text-lg md:text-xl font-semibold mt-6 mb-3 text-zinc-200;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-lg md:text-xl font-semibold mt-6 mb-3;
+    color: #E4E4E7;
   }
 
   .prose-custom h5 {
-    @apply text-base md:text-lg font-semibold mt-4 mb-2 text-zinc-200;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-base md:text-lg font-semibold mt-4 mb-2;
+    color: #E4E4E7;
   }
 
   .prose-custom h6 {
-    @apply text-sm md:text-base font-semibold mt-4 mb-2 text-zinc-300;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply text-sm md:text-base font-semibold mt-4 mb-2;
+    color: #D4D4D8;
   }
 
   .prose-custom p {
@@ -118,17 +134,28 @@
   }
 
   .prose-custom li {
-    @apply text-zinc-300;
+    color: #A1A1AA;
     padding-left: 0.5rem;
   }
 
   .prose-custom li::marker {
-    @apply text-zinc-500;
+    color: #52525B;
   }
 
   .prose-custom blockquote {
-    @apply border-l-4 pl-4 italic my-6 text-zinc-400;
-    border-left-color: var(--accent-color);
+    border-left: 3px solid #22C55E;
+    background: #1E2026;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 1.5rem 0;
+    font-style: italic;
+    font-weight: 500;
+    color: #F4F4F5;
+    line-height: 1.6;
+  }
+
+  .prose-custom blockquote p {
+    margin-bottom: 0;
   }
 
   .prose-custom code:not(pre code) {
@@ -159,13 +186,14 @@
     color: var(--accent-hover);
   }
 
-
   .prose-custom strong {
-    @apply font-bold text-zinc-100;
+    @apply font-bold;
+    color: #F4F4F5;
   }
 
   .prose-custom em {
-    @apply italic text-zinc-200;
+    @apply italic;
+    color: #D4D4D8;
   }
 
   .prose-custom mark {
@@ -180,19 +208,23 @@
   }
 
   .prose-custom thead {
-    @apply bg-zinc-800/50;
+    background: rgba(39, 39, 42, 0.5);
   }
 
   .prose-custom th {
-    @apply border-b-2 border-zinc-700 px-4 py-3 text-left font-semibold text-zinc-100;
+    border-bottom: 2px solid #2A2B30;
+    @apply px-4 py-3 text-left font-semibold;
+    color: #F4F4F5;
   }
 
   .prose-custom td {
-    @apply border-b border-zinc-800 px-4 py-3 text-zinc-300;
+    border-bottom: 1px solid #27272A;
+    @apply px-4 py-3;
+    color: #A1A1AA;
   }
 
   .prose-custom tbody tr:hover {
-    @apply bg-zinc-800/20;
+    background: rgba(39, 39, 42, 0.2);
   }
 
   .prose-custom img {
@@ -202,7 +234,8 @@
   }
 
   .prose-custom hr {
-    @apply my-12 border-zinc-700;
+    @apply my-12;
+    border-color: #2A2B30;
   }
 
   /* Better spacing between different elements */
@@ -220,17 +253,18 @@
     @apply mt-2 mb-2;
   }
 
-
   /* Definition list styling */
   .prose-custom dl {
     @apply my-6;
   }
 
   .prose-custom dt {
-    @apply font-semibold text-zinc-100 mb-2;
+    @apply font-semibold mb-2;
+    color: #F4F4F5;
   }
 
   .prose-custom dd {
-    @apply ml-6 mb-4 text-zinc-300;
+    @apply ml-6 mb-4;
+    color: #A1A1AA;
   }
 }
