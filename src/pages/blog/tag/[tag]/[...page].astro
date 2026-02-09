@@ -8,197 +8,131 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const posts = await getCollection('blog', ({ data }) => {
     return !data.draft;
   });
-  
-  // Get all unique tags
+
   const allTags = new Set<string>();
   posts.forEach(post => {
     post.data.tags.forEach(tag => allTags.add(tag));
   });
-  
-  // Create paginated routes for each tag
+
   const paths = [];
   for (const tag of allTags) {
-    // Filter posts by tag
-    const tagPosts = posts.filter(post => 
+    const tagPosts = posts.filter(post =>
       post.data.tags.includes(tag)
     );
-    
-    // Sort by date
     tagPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
-    
-    // Paginate posts for this tag
-    const tagPages = paginate(tagPosts, { 
+
+    const tagPages = paginate(tagPosts, {
       pageSize: 5,
       params: { tag }
     });
-    
+
     paths.push(...tagPages);
   }
-  
+
   return paths;
 };
 
 const { page } = Astro.props;
 const { tag } = Astro.params;
-
-// Capitalize tag for display
-const displayTag = tag.split(' ').map(word => 
-  word.charAt(0).toUpperCase() + word.slice(1)
-).join(' ');
 ---
 
-<Layout title={`Posts tagged "${displayTag}" - Dmytro Momot`} description={`Articles about ${tag}`}>
-  <main class="container mx-auto px-4 py-16 max-w-4xl">
-    <!-- Header Section -->
-    <header class="mb-16 text-center max-w-3xl mx-auto">
-      <div class="inline-block px-6 py-2 bg-zinc-100 text-zinc-900 rounded-full text-sm font-semibold mb-6">
-        Tag: {displayTag}
-      </div>
-      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        Posts Tagged "{displayTag}"
-      </h1>
-      <p class="text-lg text-zinc-400">
-        {page.total} {page.total === 1 ? 'post' : 'posts'} found
-      </p>
-    </header>
+<Layout title={`#${tag} - Dmytro Momot`} description={`Articles about ${tag}`}>
+  <div class="h-px bg-[#2A2B30]"></div>
 
-    <!-- Posts Grid -->
-    <div class="grid gap-8 max-w-3xl mx-auto">
-      {page.data.map((post, index) => (
-        <article class="group relative mt-4">
-          <!-- Date Badge -->
-          <div class="absolute -top-3 left-8 px-4 py-1 bg-zinc-100 text-zinc-900 rounded-full text-xs font-semibold z-10">
-            {post.data.publishDate.toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric',
-              year: 'numeric'
-            })}
+  <!-- Hero with breadcrumb -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-4 pt-[60px] pb-5 px-6 lg:px-[120px]">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2">
+        <a href="/blog" class="font-mono text-[11px] font-medium text-[#52525B] hover:text-[#71717A] transition-colors">Blog</a>
+        <span class="font-mono text-[11px] text-[#3F3F46]">/</span>
+        <a href="/blog/tags" class="font-mono text-[11px] font-medium text-[#52525B] hover:text-[#71717A] transition-colors">Topics</a>
+        <span class="font-mono text-[11px] text-[#3F3F46]">/</span>
+        <span class="font-mono text-[11px] font-medium text-[#22C55E]">{tag}</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-[40px] font-bold text-[#F4F4F5]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">
+        #{tag}
+      </h1>
+      <p class="font-mono text-xs font-medium text-[#52525B]">
+        {page.total} {page.total === 1 ? 'post' : 'posts'}
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts List -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-[120px] pb-10">
+      {page.data.map((post) => (
+        <article class="flex flex-col md:flex-row gap-4 md:gap-10 py-7 border-t border-[#2A2B30]">
+          <div class="flex-shrink-0">
+            <time class="font-mono text-xs font-medium text-[#52525B] whitespace-nowrap">
+              {post.data.publishDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+              })}
+            </time>
           </div>
-          
-          <!-- Card Content -->
-          <div class="relative bg-zinc-800/50 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-zinc-700 overflow-hidden">
-            <!-- Content -->
-            <div class="space-y-4">
-              <h2 class="text-2xl md:text-3xl font-bold leading-tight">
-                <a href={`/blog/${post.id}`} class="block group-hover:text-[#9ECBFF] transition-colors">
-                  {post.data.title}
-                </a>
-              </h2>
-              
-              <p class="text-zinc-400 leading-relaxed line-clamp-3">
-                {post.data.description}
-              </p>
-              
-              <!-- Tags and Read More -->
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-2">
-                <div class="flex gap-2 flex-wrap">
-                  {post.data.tags.map((postTag) => (
-                    <a 
-                      href={`/blog/tag/${postTag}`}
-                      class={`text-xs px-3 py-1.5 rounded-full transition-colors ${
-                        postTag === tag 
-                          ? 'bg-zinc-100 text-zinc-900' 
-                          : 'bg-zinc-700 hover:bg-zinc-600'
-                      }`}
-                    >
-                      #{postTag}
-                    </a>
-                  ))}
-                </div>
-                
-                <a 
-                  href={`/blog/${post.id}`} 
-                  class="inline-flex items-center gap-2 text-sm font-medium link-accent group-hover:gap-3 transition-all"
+          <div class="flex flex-col gap-3">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.3px;">
+              <a href={`/blog/${post.id}`} class="text-[22px] font-bold text-[#F4F4F5] hover:text-[#22C55E] transition-colors">
+                {post.data.title}
+              </a>
+            </h2>
+            <p class="text-sm text-[#71717A] leading-relaxed">
+              {post.data.description}
+            </p>
+            <div class="flex gap-2 flex-wrap">
+              {post.data.tags.map((postTag) => (
+                <a
+                  href={`/blog/tag/${postTag}`}
+                  class:list={[
+                    "border rounded-sm px-2 py-0.5 font-mono text-[10px] font-medium transition-colors",
+                    postTag === tag
+                      ? "border-[#22C55E] text-[#22C55E]"
+                      : "border-[#3F3F46] text-[#52525B] hover:text-[#71717A] hover:border-[#52525B]"
+                  ]}
                 >
-                  Read more
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
+                  {postTag}
                 </a>
-              </div>
+              ))}
             </div>
-            
-            <!-- Hover accent line -->
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
           </div>
         </article>
       ))}
     </div>
+  </section>
 
-    {/* Pagination Navigation */}
-    <nav class="mt-16">
-      {page.lastPage > 1 && (
-        <div class="flex justify-center items-center gap-4 mb-8">
-          {/* Previous Button */}
-          {page.url.prev ? (
-            <a 
-              href={page.url.prev} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              Previous
-            </a>
-          ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              Previous
-            </span>
-          )}
-          
-          {/* Page Numbers */}
-          <div class="flex gap-2 items-center">
-            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
-              <a 
-                href={num === 1 ? `/blog/tag/${tag}` : `/blog/tag/${tag}/${num}`}
-                class={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-all duration-200 ${
-                  num === page.currentPage 
-                    ? 'bg-zinc-100 text-zinc-900 scale-110' 
-                    : 'bg-zinc-800 hover:bg-zinc-700 hover:scale-105'
-                }`}
-              >
-                {num}
-              </a>
-            ))}
-          </div>
-          
-          {/* Next Button */}
-          {page.url.next ? (
-            <a 
-              href={page.url.next} 
-              class="group flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
-            >
-              Next
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-          ) : (
-            <span class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 text-zinc-400 rounded-lg cursor-not-allowed opacity-50">
-              Next
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
-          )}
-        </div>
-      )}
-      
-      <!-- Footer Info -->
-      <div class="text-center pt-8">
-        <p class="text-sm text-zinc-400">
-          Showing {((page.currentPage - 1) * 5) + 1}-{Math.min(page.currentPage * 5, page.total)} of {page.total} posts tagged "{displayTag}"
-        </p>
+  <!-- Pagination -->
+  {page.lastPage > 1 && (
+    <section class="bg-[#16171B]">
+      <div class="max-w-[1280px] mx-auto flex justify-center items-center gap-2 py-10 px-6 lg:px-[120px]">
+        {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+          <a
+            href={num === 1 ? `/blog/tag/${tag}` : `/blog/tag/${tag}/${num}`}
+            class:list={[
+              "font-mono text-[13px] font-medium rounded-sm px-3.5 py-2 transition-colors",
+              num === page.currentPage
+                ? "bg-[#22C55E] text-[#16171B] font-bold"
+                : "border border-[#2A2B30] text-[#71717A] hover:text-[#F4F4F5] hover:border-[#3F3F46]"
+            ]}
+          >
+            {num}
+          </a>
+        ))}
+        {page.url.next && (
+          <a
+            href={page.url.next}
+            class="font-mono text-[13px] font-medium rounded-sm px-3.5 py-2 border border-[#2A2B30] text-[#71717A] hover:text-[#F4F4F5] hover:border-[#3F3F46] transition-colors"
+          >
+            &rarr;
+          </a>
+        )}
       </div>
-    </nav>
-  </main>
+    </section>
+  )}
+
+  <div class="h-px bg-[#2A2B30]"></div>
   <Footer />
 </Layout>

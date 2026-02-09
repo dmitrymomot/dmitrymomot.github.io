@@ -18,179 +18,69 @@ posts.forEach(post => {
 // Sort tags by count (descending) then alphabetically
 const sortedTags = Array.from(tagCounts.entries())
   .sort((a, b) => {
-    if (b[1] !== a[1]) return b[1] - a[1]; // Sort by count
-    return a[0].localeCompare(b[0]); // Then alphabetically
+    if (b[1] !== a[1]) return b[1] - a[1];
+    return a[0].localeCompare(b[0]);
   });
 
-// Group tags by first letter for better organization
-const tagsByLetter = new Map<string, Array<[string, number]>>();
-sortedTags.forEach(([tag, count]) => {
-  const firstLetter = tag[0].toUpperCase();
-  if (!tagsByLetter.has(firstLetter)) {
-    tagsByLetter.set(firstLetter, []);
-  }
-  tagsByLetter.get(firstLetter)?.push([tag, count]);
-});
+// Popular tags: top 8
+const popularTags = sortedTags.slice(0, 8);
 
-// Sort letters alphabetically
-const sortedLetters = Array.from(tagsByLetter.keys()).sort();
+// All tags sorted alphabetically
+const allTagsSorted = Array.from(tagCounts.entries())
+  .sort((a, b) => a[0].localeCompare(b[0]));
 ---
 
-<Layout title="All Tags - Dmytro Momot" description="Browse all tags from the blog">
-  <!-- Hero Section - Matching blog page design -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
-    <!-- Subtle animated background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div>
+<Layout title="All Topics - Dmytro Momot" description="Browse all topics from the blog">
+  <div class="h-px bg-[#2A2B30]"></div>
+
+  <!-- Hero -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-3 pt-[60px] pb-5 px-6 lg:px-[120px]">
+      <p class="font-mono text-[11px] font-semibold text-[#71717A]">// TOPICS</p>
+      <h1 class="text-3xl md:text-[40px] font-bold text-[#F4F4F5]" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">
+        Browse by topic
+      </h1>
+      <p class="font-mono text-xs font-medium text-[#52525B]">
+        {tagCounts.size} topics across {posts.length} articles
+      </p>
     </div>
-    
-    <div class="container mx-auto px-4 py-16 md:py-20 max-w-5xl relative">
-      <div class="text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-          Blog Topics
-        </h1>
-        <p class="text-lg md:text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
-          Explore {tagCounts.size} topics from {posts.length} articles
-        </p>
-        
-        <!-- Simple CTA -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/blog" 
-            class="group inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-all duration-200"
+  </section>
+
+  <!-- Popular -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-6 pt-10 px-6 lg:px-[120px]">
+      <p class="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider">Popular</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {popularTags.map(([tag, count]) => (
+          <a
+            href={`/blog/tag/${tag}`}
+            class="flex items-center justify-between border border-[#2A2B30] rounded py-3.5 px-5 hover:border-[#3F3F46] transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-            Browse All Posts
+            <span class="font-mono text-sm font-semibold text-[#F4F4F5]">{tag}</span>
+            <span class="font-mono text-xs font-medium text-[#52525B]">{count}</span>
           </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <main class="container mx-auto px-4 py-16 max-w-4xl">
-
-    <!-- Section Title - Popular Tags -->
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        Popular Topics
-      </h2>
-      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
-    </div>
-
-    {/* Popular Tags Section */}
-    <section class="mb-16 max-w-3xl mx-auto">
-      <div class="flex flex-wrap gap-4 justify-center">
-        {sortedTags.slice(0, 10).map(([tag, count], index) => (
-          <a 
+  <!-- All Topics -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-6 pt-10 pb-[60px] px-6 lg:px-[120px]">
+      <p class="font-mono text-xs font-bold text-[#71717A] uppercase tracking-wider">All Topics</p>
+      <div class="flex flex-wrap gap-2">
+        {allTagsSorted.map(([tag]) => (
+          <a
             href={`/blog/tag/${tag}`}
-            class="group relative px-6 py-3 bg-zinc-800/50 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-zinc-700"
+            class="border border-[#3F3F46] rounded-sm py-1.5 px-3 font-mono text-[11px] font-medium text-[#71717A] hover:text-[#F4F4F5] hover:border-[#52525B] transition-colors"
           >
-            <span class="text-lg font-medium text-zinc-200 group-hover:text-[#9ECBFF] transition-colors">
-              #{tag}
-            </span>
-            <span class="absolute -top-2 -right-2 text-xs px-2 py-1 bg-zinc-100 text-zinc-900 rounded-full font-semibold">
-              {count}
-            </span>
+            {tag}
           </a>
         ))}
       </div>
-    </section>
-
-    <!-- Section Title - All Tags -->
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        All Topics A-Z
-      </h2>
-      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
     </div>
+  </section>
 
-    {/* All Tags Alphabetically */}
-    <section class="mb-16 max-w-3xl mx-auto">
-      <div class="bg-zinc-800/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-zinc-700">
-        <div class="space-y-8">
-          {sortedLetters.map(letter => (
-            <div>
-              <h3 class="text-sm font-bold text-zinc-500 text-zinc-500 mb-3 uppercase tracking-wider border-b border-zinc-700 pb-2">
-                {letter}
-              </h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {tagsByLetter.get(letter)?.map(([tag, count]) => (
-                  <a 
-                    href={`/blog/tag/${tag}`}
-                    class="group flex items-center justify-between px-4 py-2.5 bg-zinc-800 rounded-lg hover:shadow-md transition-all duration-200 hover:scale-[1.02] border border-zinc-700"
-                  >
-                    <span class="text-sm font-medium text-zinc-300 group-hover:text-[#9ECBFF] transition-colors truncate mr-2">
-                      {tag}
-                    </span>
-                    <span class="text-xs px-2 py-0.5 bg-zinc-700 rounded-full text-zinc-400 flex-shrink-0">
-                      {count}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Title - Tag Cloud -->
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-tight pb-1">
-        Topic Cloud
-      </h2>
-      <div class="w-20 h-1 bg-gradient-to-r from-[#9ECBFF] to-[#79B8FF] mx-auto mt-4 rounded-full"></div>
-    </div>
-
-    {/* Tag Cloud Visualization */}
-    <section class="mb-16 max-w-3xl mx-auto">
-      <div class="relative bg-zinc-800/50 rounded-2xl p-12 border border-zinc-700 overflow-hidden">
-        <div class="flex flex-wrap gap-3 justify-center items-center">
-          {sortedTags.map(([tag, count]) => {
-            // Calculate font size based on count (min 0.875rem, max 2.5rem)
-            const maxCount = sortedTags[0][1];
-            const minSize = 0.875;
-            const maxSize = 2.5;
-            const size = minSize + (count / maxCount) * (maxSize - minSize);
-            
-            // Calculate opacity based on count (min 0.6, max 1)
-            const opacity = 0.6 + (count / maxCount) * 0.4;
-            
-            return (
-              <a 
-                href={`/blog/tag/${tag}`}
-                class="hover:text-[#9ECBFF] transition-all duration-300 hover:scale-110 font-medium"
-                style={{
-                  fontSize: `${size}rem`,
-                  opacity: opacity,
-                  color: count > maxCount * 0.7 ? '#9ECBFF' : undefined
-                }}
-              >
-                {tag}
-              </a>
-            );
-          })}
-        </div>
-        {/* Decorative gradient orbs */}
-        <div class="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-[#9ECBFF] to-transparent opacity-10 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-tr from-[#79B8FF] to-transparent opacity-10 rounded-full blur-3xl"></div>
-      </div>
-    </section>
-
-    {/* Footer Navigation */}
-    <nav class="pt-8">
-      <div class="text-center">
-        <p class="text-sm text-zinc-400 mb-4">
-          Browsing {tagCounts.size} topics from {posts.length} articles
-        </p>
-      </div>
-    </nav>
-  </main>
+  <div class="h-px bg-[#2A2B30]"></div>
   <Footer />
 </Layout>
