@@ -15,61 +15,36 @@ const { page } = Astro.props;
 const { Content } = await render(page);
 ---
 
-<Layout 
-  title={`${page.data.title} - Dmytro Momot`} 
+<Layout
+  title={`${page.data.title} - Dmytro Momot`}
   description={page.data.description}
 >
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black">
-    <!-- Subtle animated background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-72 h-72 bg-gradient-to-br from-[#9ECBFF] via-[#79B8FF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-gradient-to-tr from-[#79B8FF] via-[#9ECBFF] to-transparent opacity-5 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 py-16 md:py-20 max-w-4xl relative">
-      <header class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-          {page.data.title}
-        </h1>
-        <p class="text-lg text-zinc-400 leading-relaxed">
-          {page.data.description}
-        </p>
-        <!-- Last updated date -->
-        <div class="text-sm text-zinc-500 mt-6">
-          Last updated: {page.data.lastUpdated.toLocaleDateString('en-US', { 
-            month: 'long', 
-            day: 'numeric',
-            year: 'numeric'
-          })}
-        </div>
-      </header>
+  <!-- Hero -->
+  <section class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-4 pt-[60px] pb-10 px-6 lg:px-[320px]">
+      <span class="font-mono text-sm font-semibold text-[#22C55E]">// LEGAL</span>
+      <h1 class="text-[42px] font-bold text-[#F4F4F5] leading-tight" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px;">
+        {page.data.title}
+      </h1>
+      <span class="font-mono text-xs font-medium text-[#52525B]">
+        Last updated: {page.data.lastUpdated.toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        })}
+      </span>
     </div>
   </section>
 
-  <main class="relative">
-    <div class="container mx-auto px-4 py-16 max-w-4xl">
-      <!-- Content with same styling as blog posts -->
-      <article class="prose-custom max-w-3xl mx-auto mb-16">
+  <!-- Content -->
+  <main class="bg-[#16171B]">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-[320px] pb-20">
+      <article class="prose-custom">
         <Content />
       </article>
-
-      <!-- Navigation -->
-      <nav class="max-w-3xl mx-auto">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/" 
-            class="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-700/80 hover:border-zinc-600 hover:scale-105 transition-all duration-200 ease-in-out font-semibold"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Back to Home
-          </a>
-        </div>
-      </nav>
     </div>
   </main>
+
+  <div class="h-px bg-[#2A2B30]"></div>
   <Footer />
 </Layout>
