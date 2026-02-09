@@ -12,7 +12,7 @@ export interface Props {
 
 const {
   title,
-  description = 'Dmytro Momot - Software Engineer & Consultant',
+  description = 'Product Engineer with 16 years of shipping software. Building systems, leading teams, and delivering products that scale.',
   image = '/og-image.jpg',
   canonical = Astro.url.href,
   type = 'website'
@@ -32,20 +32,21 @@ const jsonLD = {
     "https://linkedin.com/in/dmitrymomot",
     "https://twitter.com/dmomot"
   ],
-  "jobTitle": "Software Engineer & Consultant",
+  "jobTitle": "Product Engineer & Engineering Leader",
   "worksFor": {
     "@type": "Organization",
     "name": "Self-employed"
   },
   "knowsAbout": [
-    "Software Development",
-    "Cloud Architecture",
     "Go Programming",
-    "Microservices",
-    "B2B SaaS",
-    "Technical Consulting"
+    "Distributed Systems",
+    "Backend Engineering",
+    "Engineering Leadership",
+    "Product Engineering",
+    "Cloud Architecture",
+    "B2B SaaS"
   ],
-  "description": "Software Engineer & Consultant specializing in Go, cloud architecture, and B2B SaaS solutions"
+  "description": "Product Engineer & Engineering Leader with 16 years of shipping software"
 };
 ---
 
@@ -77,7 +78,7 @@ const jsonLD = {
     <meta property="twitter:title" content={siteTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site).href} />
-    <meta property="twitter:creator" content="@dmitry_momot" />
+    <meta property="twitter:creator" content="@dmomot" />
 
     <!-- Additional SEO -->
     <meta name="author" content="Dmytro Momot" />
@@ -97,13 +98,12 @@ const jsonLD = {
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
 
-    <!-- Google Analytics - Put GA tracking script here -->
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6556P8Q99J"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -113,7 +113,7 @@ const jsonLD = {
       gtag('config', 'G-6556P8Q99J');
     </script>
   </head>
-  <body class="min-h-screen bg-zinc-900 text-zinc-100 font-sans antialiased">
+  <body class="min-h-screen bg-[#16171B] text-zinc-100 font-sans antialiased">
     <Navbar />
     <slot />
   </body>
