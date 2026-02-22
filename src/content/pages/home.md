@@ -74,6 +74,6 @@ about:
 social:
   github: "https://github.com/dmitrymomot"
   linkedin: "https://linkedin.com/in/dmitrymomot"
-  twitter: "https://twitter.com/dmomot"
+  twitter: "https://x.com/dmitry_momot"
   email: "contact@dmomot.com"
 ---
